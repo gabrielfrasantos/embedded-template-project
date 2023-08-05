@@ -22,3 +22,6 @@
 [submodule "embedded-infra"]
 	path = embedded-infra
 	url = https://github.com/gabrielfrasantos/embedded-infra-lib.git
+[submodule "arch/arm_cortex_m_r"]
+	path = arch/arm_cortex_m_r
+	url = https://github.com/gabrielfrasantos/embedded-hal-arm-cortex.git
