@@ -1,0 +1,24 @@
+[submodule "arch/hal/ti"]
+	path = arch/hal/ti
+	url = https://github.com/gabrielfrasantos/embedded-hal-ti.git
+[submodule "arch/hal/st"]
+	path = arch/hal/st
+	url = https://github.com/gabrielfrasantos/embedded-hal-st.git
+[submodule "arch/hal/nxp"]
+	path = arch/hal/nxp
+	url = https://github.com/gabrielfrasantos/embedded-hal-nxp.git
+[submodule "drivers"]
+	path = drivers
+	url = https://github.com/gabrielfrasantos/embedded-drivers.git
+[submodule "implementations/segger_rtt"]
+	path = implementations/segger_rtt
+	url = https://github.com/gabrielfrasantos/embedded-segger-rtt.git
+[submodule "implementations/stm32_usb"]
+	path = implementations/stm32_usb
+	url = https://github.com/gabrielfrasantos/embedded-stm32-usb.git
+[submodule "implementations/filesystem"]
+	path = implementations/filesystem
+	url = https://github.com/gabrielfrasantos/embedded-fs.git
+[submodule "embedded-infra"]
+	path = embedded-infra
+	url = https://github.com/gabrielfrasantos/embedded-infra-lib.git
