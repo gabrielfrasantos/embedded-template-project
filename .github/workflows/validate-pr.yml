@@ -1,0 +1,18 @@
+---
+name: Validate Pull-Request
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  conventional_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Namchee/conventional-pr@15e783651cfaa0c26ed993b971edf4418f50aba0 # v0.13.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+          body: false
+          issue: false

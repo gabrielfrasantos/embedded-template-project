@@ -1,0 +1,11 @@
+{
+  "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+  "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+  "clangd.arguments": [
+    "--query-driver=/**/arm-none-eabi-*"
+  ],
+  "sonarlint.connectedMode.project": {
+    "connectionId": "gabrielfrasantos",
+    "projectKey": "gabrielfrasantos_embedded-infra-lib"
+  }
+}

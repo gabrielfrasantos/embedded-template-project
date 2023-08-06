@@ -1,0 +1,250 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "defaults",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "On",
+        "CMAKE_COMPILE_WARNING_AS_ERROR": "On"
+      }
+    },
+    {
+      "name": "ContinuousIntegration",
+      "displayName": "Configuration for Continuous Integration",
+      "inherits": "defaults",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "EMIL_ENABLE_DOCKER_TOOLS": "Off",
+        "EMIL_BUILD_EXAMPLES": "On"
+      }
+    },
+    {
+      "name": "Package",
+      "displayName": "Configuration for CPack package generation",
+      "inherits": "defaults",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "EMIL_ENABLE_DOCKER_TOOLS": "Off",
+        "EMIL_BUILD_TESTS": "Off",
+        "EMIL_BUILD_EXAMPLES": "Off"
+      }
+    },
+    {
+      "name": "Coverage",
+      "displayName": "Configuration for Code Coverage",
+      "inherits": "ContinuousIntegration",
+      "cacheVariables": {
+        "EMIL_ENABLE_COVERAGE": "On"
+      },
+      "generator": "Ninja"
+    },
+    {
+      "name": "MutationTesting",
+      "displayName": "Configuration for Mutation Testing",
+      "inherits": "ContinuousIntegration",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang-12",
+        "CMAKE_CXX_COMPILER": "clang++-12",
+        "EMIL_ENABLE_MUTATION_TESTING": "On",
+        "EMIL_MUTATION_TESTING_RUNNER_ARGUMENTS": "--reporters;Elements;--report-dir;${sourceDir}/reports/mull"
+      },
+      "generator": "Ninja"
+    },
+    {
+      "name": "Fuzzing",
+      "displayName": "Configuration for Fuzzing",
+      "inherits": "ContinuousIntegration",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "EMIL_BUILD_TESTS": "Off",
+        "EMIL_BUILD_EXAMPLES": "Off",
+        "EMIL_ENABLE_FUZZING": "On"
+      },
+      "generator": "Ninja"
+    },
+    {
+      "name": "Host",
+      "displayName": "Configuration for Host Tooling",
+      "inherits": "defaults",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo;MinSizeRel",
+        "EMIL_BUILD_TESTS": "Off",
+        "EMIL_BUILD_EXAMPLES": "Off"
+      },
+      "generator": "Ninja Multi-Config"
+    },
+    {
+      "name": "HostClangMsvc",
+      "displayName": "Configuration for Host Tooling using clang-cl to target Windows",
+      "inherits": "defaults",
+      "toolchainFile": "${sourceDir}/cmake/toolchain-clang-x86_64-pc-windows-msvc.cmake",
+      "cacheVariables": {
+        "CMAKE_COMPILE_WARNING_AS_ERROR": "Off",
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo;MinSizeRel",
+        "EMIL_BUILD_TESTS": "Off",
+        "EMIL_BUILD_EXAMPLES": "Off"
+      },
+      "generator": "Ninja Multi-Config"
+    },
+    {
+      "name": "Embedded",
+      "displayName": "Configuration for Embedded",
+      "inherits": "defaults",
+      "toolchainFile": "${sourceDir}/cmake/toolchain-arm-gcc-m4-fpv4-sp-d16.cmake",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo;MinSizeRel",
+        "TARGET_CORTEX": "m4"
+      },
+      "generator": "Ninja Multi-Config"
+    },
+    {
+      "name": "Embedded-FreeRTOS",
+      "displayName": "Configuration for Embedded with FreeRTOS",
+      "inherits": "Embedded",
+      "cacheVariables": {
+        "EMIL_INCLUDE_FREERTOS": "On",
+        "FREERTOS_CONFIG_FILE_DIRECTORY": "${sourceDir}/examples/threading/config"
+      }
+    },
+    {
+      "name": "Embedded-ThreadX",
+      "displayName": "Configuration for Embedded with ThreadX",
+      "inherits": "Embedded",
+      "cacheVariables": {
+        "EMIL_INCLUDE_THREADX": "On"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ContinuousIntegration",
+      "configuration": "Debug",
+      "configurePreset": "ContinuousIntegration"
+    },
+    {
+      "name": "ContinuousIntegrationWithPackage",
+      "configuration": "Debug",
+      "configurePreset": "ContinuousIntegration",
+      "targets": ["all", "package"]
+    },
+    {
+      "name": "Package",
+      "configuration": "MinSizeRel",
+      "configurePreset": "Package",
+      "targets": ["package"]
+    },
+    {
+      "name": "Coverage",
+      "configuration": "Debug",
+      "configurePreset": "Coverage"
+    },
+    {
+      "name": "MutationTesting",
+      "configuration": "Debug",
+      "configurePreset": "MutationTesting"
+    },
+    {
+      "name": "Fuzzing",
+      "configuration": "Debug",
+      "configurePreset": "Fuzzing"
+    },
+    {
+      "name": "Host-Debug",
+      "configuration": "Debug",
+      "configurePreset": "Host"
+    },
+    {
+      "name": "Host-Release",
+      "configuration": "Release",
+      "configurePreset": "Host"
+    },
+    {
+      "name": "Host-RelWithDebInfo",
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "Host"
+    },
+    {
+      "name": "Host-MinSizeRel",
+      "configuration": "MinSizeRel",
+      "configurePreset": "Host"
+    },
+    {
+      "name": "HostClangMsvc-Debug",
+      "configuration": "Debug",
+      "configurePreset": "HostClangMsvc"
+    },
+    {
+      "name": "HostClangMsvc-RelWithDebInfo",
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "HostClangMsvc"
+    },
+    {
+      "name": "Embedded-Debug",
+      "configuration": "Debug",
+      "configurePreset": "Embedded"
+    },
+    {
+      "name": "Embedded-Release",
+      "configuration": "Release",
+      "configurePreset": "Embedded"
+    },
+    {
+      "name": "Embedded-RelWithDebInfo",
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "Embedded"
+    },
+    {
+      "name": "Embedded-MinSizeRel",
+      "configuration": "MinSizeRel",
+      "configurePreset": "Embedded"
+    },
+    {
+      "name": "Embedded-FreeRTOS-RelWithDebInfo",
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "Embedded-FreeRTOS"
+    },
+    {
+      "name": "Embedded-ThreadX-RelWithDebInfo",
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "Embedded-ThreadX"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "defaults",
+      "hidden": true,
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": true
+      }
+    },
+    {
+      "name": "ContinuousIntegration",
+      "configurePreset": "ContinuousIntegration",
+      "configuration": "Debug",
+      "inherits": "defaults"
+    },
+    {
+      "name": "Coverage",
+      "configurePreset": "Coverage",
+      "configuration": "Debug",
+      "inherits": "defaults"
+    },
+    {
+      "name": "MutationTesting",
+      "configurePreset": "MutationTesting",
+      "configuration": "Debug",
+      "inherits": "defaults",
+      "output": {
+        "verbosity": "verbose"
+      }
+    }
+  ]
+}
