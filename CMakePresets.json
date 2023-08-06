@@ -91,10 +91,10 @@
       "generator": "Ninja Multi-Config"
     },
     {
-      "name": "Embedded",
+      "name": "Embedded-CortexM4",
       "displayName": "Configuration for Embedded",
       "inherits": "defaults",
-      "toolchainFile": "${sourceDir}/cmake/toolchain-arm-gcc-m4-fpv4-sp-d16.cmake",
+      "toolchainFile": "${sourceDir}/embedded-infra/cmake/toolchain-arm-gcc-m4-fpv4-sp-d16.cmake",
       "cacheVariables": {
         "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo;MinSizeRel",
         "TARGET_CORTEX": "m4"
@@ -102,19 +102,58 @@
       "generator": "Ninja Multi-Config"
     },
     {
-      "name": "Embedded-FreeRTOS",
-      "displayName": "Configuration for Embedded with FreeRTOS",
-      "inherits": "Embedded",
+      "name": "EK-TM4C123GXL-BareMetal",
+      "displayName": "Configuration for EK-TM4C123GXL - TM4C123GH6PM Bare metal",
+      "inherits": "Embedded-CortexM4",
+      "cacheVariables": {
+        "TARGET_MCU_VENDOR": "ti",
+        "TARGET_MCU_FAMILY": "TM4C123",
+        "TARGET_MCU": "tm4c123gh6pm"
+      }
+    },
+    {
+      "name": "EK-TM4C123GXL-FreeRTOS",
+      "displayName": "Configuration for EK-TM4C123GXL - TM4C123GH6PM with FreeRTOS",
+      "inherits": "EK-TM4C123GXL-BareMetal",
       "cacheVariables": {
         "EMIL_INCLUDE_FREERTOS": "On",
         "FREERTOS_CONFIG_FILE_DIRECTORY": "${sourceDir}/examples/threading/config"
       }
     },
     {
-      "name": "Embedded-ThreadX",
-      "displayName": "Configuration for Embedded with ThreadX",
-      "inherits": "Embedded",
+      "name": "EK-TM4C123GXL-ThreadX",
+      "displayName": "Configuration for EK-TM4C123GXL - TM4C123GH6PM with ThreadX",
+      "inherits": "EK-TM4C123GXL-BareMetal",
       "cacheVariables": {
+        "EMIL_INCLUDE_THREADX": "On"
+      }
+    },
+    {
+      "name": "STM32F4DISCOVERY-BareMetal",
+      "displayName": "Configuration for STM32F4DISCOVERY - STM32F407VG Bare metal",
+      "inherits": "Embedded-CortexM4",
+      "cacheVariables": {
+        "TARGET_MCU_VENDOR": "st",
+        "TARGET_MCU_FAMILY": "stm32f4xx",
+        "TARGET_MCU": "stm32f407vg"
+      }
+    },
+    {
+      "name": "STM32F4DISCOVERY-FreeRTOS",
+      "displayName": "Configuration for STM32F4DISCOVERY - STM32F407VG with FreeRTOS",
+      "inherits": "Embedded-CortexM4",
+      "cacheVariables": {
+        "TARGET_MCU_VENDOR": "st",
+        "EMIL_INCLUDE_FREERTOS": "On",
+        "FREERTOS_CONFIG_FILE_DIRECTORY": "${sourceDir}/examples/threading/config"
+      }
+    },
+    {
+      "name": "STM32F4DISCOVERY-ThreadX",
+      "displayName": "Configuration for STM32F4DISCOVERY - STM32F407VG with ThreadX",
+      "inherits": "Embedded-CortexM4",
+      "cacheVariables": {
+        "TARGET_MCU_VENDOR": "st",
         "EMIL_INCLUDE_THREADX": "On"
       }
     }
