@@ -4,7 +4,6 @@ name: Continuous Integration
 on:
   push:
     branches:
-      - main
       - embedded
   pull_request:
     types: [opened, synchronize, reopened]
