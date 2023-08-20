@@ -43,12 +43,12 @@ int main()
 
     static drivers::display::tft::Ssd2119Sync display(spi, chipSelect, reset, dataOrCommand, []()
         {
-            display.DrawBackground(drivers::display::tft::Color(0xff, 0xff, 0xff), []()
+            display.DrawBackground(hal::Color(0xff, 0xff, 0xff), []()
                 {
                     backLight.Set(true);
 
                     for (std::size_t i = 0; i < 320 * 240; i++)
-                        display.DrawPixel(rand(20, 240), rand(20, 200), drivers::display::tft::Color(rand(0, 0xffffff)), [](){});
+                        display.DrawPixel({rand(20, 240), rand(20, 200)}, hal::Color(rand(0, 0xffffff)), [](){});
                 });
         });
 
