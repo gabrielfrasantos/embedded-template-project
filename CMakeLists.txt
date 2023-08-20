@@ -13,9 +13,8 @@ option(REFERENCE_PROJECT_ENABLE_STM32_USB "Enable embedded immplementation of US
 
 set_directory_properties(PROPERTY USE_FOLDERS ON)
 
-add_subdirectory(application)
-add_subdirectory(drivers)
 add_subdirectory(embedded-infra)
+add_subdirectory(drivers)
 
 if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
     add_subdirectory(arch/hal/${TARGET_MCU_VENDOR})
@@ -35,6 +34,8 @@ if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
 else()
     add_subdirectory(test)
 endif()
+
+add_subdirectory(application)
 
 emil_exclude_directory_from_clang_format(drivers)
 emil_exclude_directory_from_clang_format(embedded-infra)
