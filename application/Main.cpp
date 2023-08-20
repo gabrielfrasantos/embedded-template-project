@@ -4,6 +4,12 @@
 #include "hal_tiva/tiva/Clock.hpp"
 #include "drivers/display/tft/Ssd2119.hpp"
 #include "hal_tiva/synchronous_tiva/SynchronousSpiMaster.hpp"
+#include <ctime>
+
+static std::size_t rand(std::size_t min, std::size_t max)
+{
+    return (std::rand() % max) + min;
+}
 
 int main()
 {
@@ -27,15 +33,24 @@ int main()
     hal::tiva::GpioPin dataOrCommand(hal::tiva::Port::A, 5);
     hal::tiva::GpioPin backLightDefinition(hal::tiva::Port::F, 2);
 
-    hal::OutputPin backLight(backLightDefinition);
+    static hal::OutputPin backLight(backLightDefinition);
 
     hal::tiva::SynchronousSpiMaster::Config spiConfig;
     spiConfig.baudRate = 40000000;
     hal::tiva::SynchronousSpiMaster spi(2, clock, miso, mosi, spiConfig);
 
-    drivers::display::tft::Ssd2119Sync display(spi, chipSelect, reset, dataOrCommand);
+    std::srand(321123);
 
-    backLight.Set(true);
+    static drivers::display::tft::Ssd2119Sync display(spi, chipSelect, reset, dataOrCommand, []()
+        {
+            display.DrawBackground(drivers::display::tft::Color(0xff, 0xff, 0xff), []()
+                {
+                    backLight.Set(true);
+
+                    for (std::size_t i = 0; i < 320 * 240; i++)
+                        display.DrawPixel(rand(20, 240), rand(20, 200), drivers::display::tft::Color(rand(0, 0xffffff)), [](){});
+                });
+        });
 
     eventInfrastructure.Run();
     __builtin_unreachable();

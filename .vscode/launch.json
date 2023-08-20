@@ -20,6 +20,16 @@
           "ignoreFailures": true
         }
       ]
-    }
+    },
+    {
+      "name": "EK-TM4C123GXL-custom",
+      "cwd": "${workspaceRoot}",
+      "request": "launch",
+      "executable": "${command:cmake.launchTargetPath}",
+      "type": "cortex-debug",
+      "servertype": "jlink",
+      "interface": "swd",
+      "device": "TM4C123GH6PM"
+    },
   ]
 }
