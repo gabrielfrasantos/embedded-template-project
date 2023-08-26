@@ -1,0 +1,1 @@
+add_subdirectory(${REFERENCE_PROJECT_BOARD})
