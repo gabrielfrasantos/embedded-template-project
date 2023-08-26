@@ -7,6 +7,7 @@
 #include "hal_tiva/instantiations/LaunchPadBsp.hpp"
 #include "hal_tiva/synchronous_tiva/SynchronousSpiMaster.hpp"
 #include "hal_tiva/tiva/Clock.hpp"
+#include "hal_tiva/tiva/Uart.hpp"
 #include "infra/util/Optional.hpp"
 
 namespace application
@@ -20,6 +21,7 @@ namespace application
         void Initialize(const infra::Function<void()>& onDone) override;
         infra::EventDispatcherWithWeakPtr& EventDispatcher() override;
         services::Tracer& Tracer() override;
+        services::TerminalWithCommandsImpl& Terminal() override;
 
         hal::GpioPin& DebugLed() override;
         hal::DisplayLcd& Display() override;
@@ -29,6 +31,12 @@ namespace application
         instantiations::EventInfrastructure eventInfrastructure;
         infra::Optional<instantiations::LaunchPadUi> ui;
         infra::Optional<instantiations::LaunchPadTerminalAndTracer> tracer;
+        hal::tiva::Uart::Config terminalUartConfig;
+        infra::Optional<hal::tiva::Uart> terminalUart;
+        infra::Optional<services::TerminalWithCommandsImpl> terminal;
+
+        hal::tiva::GpioPin& terminalUartTx = hal::tiva::dummyPin;
+        hal::tiva::GpioPin terminalUartRx{ hal::tiva::Port::A, 0 };
 
         hal::tiva::GpioPin reset{ hal::tiva::Port::D, 7 };
         hal::tiva::GpioPin dataOrCommand{ hal::tiva::Port::A, 5 };

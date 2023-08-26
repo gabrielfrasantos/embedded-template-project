@@ -26,8 +26,8 @@ int main()
                 {
                     hw.DisplayBackLight().Set(true);
 
-                    for (std::size_t i = 0; i < 320 * 240; i++)
-                        hw.Display().DrawPixel({ rand(20, 280), rand(20, 200) }, hal::Color(rand(0, 0xffffff)), []() {});
+                    /*for (std::size_t i = 0; i < 320 * 240; i++)
+                        hw.Display().DrawPixel({ rand(20, 280), rand(20, 200) }, hal::Color(rand(0, 0xffffff)), []() {});*/
                 });
         });
 

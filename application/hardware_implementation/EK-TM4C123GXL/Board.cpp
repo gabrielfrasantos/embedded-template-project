@@ -6,8 +6,12 @@ namespace application
     {
         hal::tiva::ConfigureClock(hal::tiva::crystalFrequency::_16_MHz, hal::tiva::oscillatorSource::main);
 
+        terminalUartConfig.enableTx = false;
+
         ui.Emplace();
         tracer.Emplace();
+        terminalUart.Emplace(0, terminalUartTx, terminalUartRx, terminalUartConfig);
+        terminal.Emplace(*terminalUart, tracer->tracer);
 
         backLight.Emplace(backLightDefinition);
         spi.Emplace(2, clock, miso, mosi, spiConfig);
@@ -22,6 +26,11 @@ namespace application
     services::Tracer& HardwareImplementation::Tracer()
     {
         return tracer->tracerInfrastructure.tracer;
+    }
+
+    services::TerminalWithCommandsImpl& HardwareImplementation::Terminal()
+    {
+        return *terminal;
     }
 
     hal::GpioPin& HardwareImplementation::DebugLed()
