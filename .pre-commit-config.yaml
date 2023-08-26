@@ -1,0 +1,52 @@
+#See https: //pre-commit.com for more information
+#See https: //pre-commit.com/hooks.html for more hooks
+
+exclude: |
+          (?x)^(
+            lib/.*|
+            infra/inc/infra_allocation.h|
+            arch/arm/soc/atmel/same5xx/source/.*|
+            arch/arm/soc/atmel/same5xx/include/.*|
+            arch/arm/soc/ti/tiva/source/.*|
+            arch/arm/soc/ti/tiva/include/.*|
+            arch/arm/soc/st/stm32f4xx/include/.*|
+            arch/arm/soc/st/stm32f4xx/source/.*|
+            arch/arm/soc/st/stm32f4xx/st_driver/.*|
+            arch/arm/soc/st/stm32f7xx/include/.*|
+            arch/arm/soc/st/stm32f7xx/source/.*|
+            arch/arm/soc/st/stm32f7xx/st_driver/.*|
+            arch/arm/soc/st/stm32h7xx/include/.*|
+            arch/arm/soc/st/stm32h7xx/source/.*|
+            arch/arm/soc/st/stm32h7xx/st_driver/.*|
+            arch/arm/soc/nxp/mk64fxx/include/.*|
+            arch/arm/soc/nxp/mk64fxx/source/.*|
+            arch/arm/soc/nxp/mk64fxx/nxp_drivers/.*|
+            .vscode/.*|
+            .clang-format|
+            .clang-format-ignore|
+            .gitlab-ci.yml
+          )$
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: clang-format
+        name: clang-format
+        entry: clang-format
+        language: system
+        'types_or': [c++, c, c#]
+        args: ["-style=file:.clang-format", "-i"]
