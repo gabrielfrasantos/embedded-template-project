@@ -28,7 +28,7 @@ namespace application
         return tracer->tracerInfrastructure.tracer;
     }
 
-    services::TerminalWithCommandsImpl& HardwareImplementation::Terminal()
+    services::TerminalWithCommands& HardwareImplementation::Terminal()
     {
         return *terminal;
     }

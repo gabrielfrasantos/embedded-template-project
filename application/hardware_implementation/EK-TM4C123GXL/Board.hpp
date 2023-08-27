@@ -21,7 +21,7 @@ namespace application
         void Initialize(const infra::Function<void()>& onDone) override;
         infra::EventDispatcherWithWeakPtr& EventDispatcher() override;
         services::Tracer& Tracer() override;
-        services::TerminalWithCommandsImpl& Terminal() override;
+        services::TerminalWithCommands& Terminal() override;
 
         hal::GpioPin& DebugLed() override;
         hal::DisplayLcd& Display() override;
