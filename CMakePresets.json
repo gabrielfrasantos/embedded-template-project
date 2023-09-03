@@ -103,7 +103,8 @@
     },
     {
       "name": "EK-TM4C123GXL-Custom",
-      "displayName": "Configuration for EK-TM4C123GXL custom - Boost-DRV8711 and BOOSTXL-key60QVG-S1",
+      "displayName": "EK-TM4C123GXL-Custom",
+      "description": "Configuration for EK-TM4C123GXL custom - Boost-DRV8711 and BOOSTXL-key60QVG-S1",
       "inherits": "Embedded-CortexM4",
       "cacheVariables": {
         "TARGET_MCU_VENDOR": "ti",
