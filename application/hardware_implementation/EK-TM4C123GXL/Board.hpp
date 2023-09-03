@@ -23,11 +23,11 @@ namespace application
         infra::EventDispatcherWithWeakPtr& EventDispatcher() override;
         services::Tracer& Tracer() override;
         services::TerminalWithCommands& Terminal() override;
-
         hal::GpioPin& DebugLed() override;
+
         hal::DisplayLcd& Display() override;
         hal::OutputPin& DisplayBackLight() override;
-        drivers::stepper_motor::Drv8711Sync& DriverDrb8711();
+        drivers::stepper_motor::Drv8711Sync& DriverDrv8711();
 
     private:
         struct HwSsd2119
@@ -92,8 +92,8 @@ namespace application
         hal::tiva::SynchronousSpiMaster::Config spiConfig{ true, true, 20000000 };
         infra::Optional<hal::tiva::SynchronousSpiMaster> spi;
 
-        infra::Optional<hal::OutputPin> backLight;
         drivers::display::tft::Ssd2119Sync::Config displayConfig;
+        infra::Optional<hal::OutputPin> backLight;
         infra::Optional<drivers::display::tft::Ssd2119Sync> display;
         infra::Optional<drivers::stepper_motor::Drv8711Sync> drv8711;
     };

@@ -53,7 +53,7 @@ namespace application
         return *backLight;
     }
 
-    drivers::stepper_motor::Drv8711Sync& HardwareImplementation::DriverDrb8711()
+    drivers::stepper_motor::Drv8711Sync& HardwareImplementation::DriverDrv8711()
     {
         return *drv8711;
     }

@@ -30,9 +30,6 @@ if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
     if (REFERENCE_PROJECT_ENABLE_STM32_USB)
         add_subdirectory(implementations/stm32_usb)
     endif()
-
-else()
-    add_subdirectory(test)
 endif()
 
 add_subdirectory(application)
