@@ -94,7 +94,7 @@ jobs:
           submodules: recursive
           token: ${{ secrets.CI_TOKEN }}
       - name: Install GNU Arm Embedded Toolchain ${{ matrix.gcc }}
-        uses: carlosperate/arm-none-eabi-gcc-action@87cd4a1b01dad71985108eff5e2f3577a815f6b4 # v1.6.2
+        uses: carlosperate/arm-none-eabi-gcc-action@6a221d7c85f5b36647d6e9b25e874abf187409d3 # v1.7.1
         with:
           release: ${{ matrix.gcc }}
       - run: sudo apt-get update && sudo apt-get install ninja-build
@@ -124,7 +124,7 @@ jobs:
           persist-credentials: false
           submodules: recursive
       - name: Install GNU Arm Embedded Toolchain "10.3-2021.10"
-        uses: carlosperate/arm-none-eabi-gcc-action@87cd4a1b01dad71985108eff5e2f3577a815f6b4 # v1.6.2
+        uses: carlosperate/arm-none-eabi-gcc-action@6a221d7c85f5b36647d6e9b25e874abf187409d3 # v1.7.1
         with:
           release: "10.3-2021.10"
       - run: sudo apt-get update && sudo apt-get install ninja-build
