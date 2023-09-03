@@ -13,9 +13,14 @@ namespace application
         terminalUart.Emplace(0, terminalUartTx, terminalUartRx, terminalUartConfig);
         terminal.Emplace(*terminalUart, tracer->tracer);
 
-        backLight.Emplace(backLightDefinition);
+        backLight.Emplace(hwSsd2119.backLight);
         spi.Emplace(2, clock, miso, mosi, spiConfig);
-        display.Emplace(*spi, chipSelect, reset, dataOrCommand, onDone, displayConfig);
+        display.Emplace(
+            *spi, hwSsd2119.chipSelect, hwSsd2119.reset, hwSsd2119.dataOrCommand, [this, &onDone]()
+            {
+                drv8711.Emplace(*spi, hwDrv8711.chipSelect, hwDrv8711.reset, hwDrv8711.sleep, onDone);
+            },
+            displayConfig);
     }
 
     infra::EventDispatcherWithWeakPtr& HardwareImplementation::EventDispatcher()
@@ -46,5 +51,10 @@ namespace application
     hal::OutputPin& HardwareImplementation::DisplayBackLight()
     {
         return *backLight;
+    }
+
+    drivers::stepper_motor::Drv8711Sync& HardwareImplementation::DriverDrb8711()
+    {
+        return *drv8711;
     }
 }

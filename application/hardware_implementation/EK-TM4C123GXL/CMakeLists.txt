@@ -12,6 +12,7 @@ target_link_libraries(reference_project.application.hardware_implementation PUBL
     hal_tiva.tiva
 
     drivers.display.tft
+    drivers.stepper_motor
     reference_project.application.hardware_abstraction
 )
 

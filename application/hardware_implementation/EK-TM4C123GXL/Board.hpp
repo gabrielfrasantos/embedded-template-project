@@ -3,6 +3,7 @@
 
 #include "application/hardware_abstraction/Hal.hpp"
 #include "drivers/display/tft/Ssd2119.hpp"
+#include "drivers/stepper_motor/Drv8711.hpp"
 #include "hal_tiva/instantiations/EventInfrastructure.hpp"
 #include "hal_tiva/instantiations/LaunchPadBsp.hpp"
 #include "hal_tiva/synchronous_tiva/SynchronousSpiMaster.hpp"
@@ -26,8 +27,49 @@ namespace application
         hal::GpioPin& DebugLed() override;
         hal::DisplayLcd& Display() override;
         hal::OutputPin& DisplayBackLight() override;
+        drivers::stepper_motor::Drv8711Sync& DriverDrb8711();
 
     private:
+        struct HwSsd2119
+        {
+            hal::tiva::GpioPin reset{ hal::tiva::Port::B, 0 };
+            hal::tiva::GpioPin dataOrCommand{ hal::tiva::Port::B, 1 };
+            hal::tiva::GpioPin backLight{ hal::tiva::Port::F, 2 };
+
+            hal::tiva::GpioPin chipSelect{ hal::tiva::Port::E, 4 };
+
+            // variant<Gpio, Pwm> a1_step
+            // variant<Gpio, Pwm> a2_direction
+            // variant<Gpio, Pwm> b1
+            // variant<Gpio, Pwm> b2
+        };
+
+        struct HwDrv8711
+        {
+            hal::tiva::GpioPin reset{ hal::tiva::Port::A, 5 };
+            hal::tiva::GpioPin sleep{ hal::tiva::Port::E, 5 };
+            hal::tiva::GpioPin direction{ hal::tiva::Port::F, 2 };
+
+            hal::tiva::GpioPin chipSelect{ hal::tiva::Port::A, 2 };
+
+            hal::tiva::GpioPin stallDetection{ hal::tiva::Port::B, 2 };
+            hal::tiva::GpioPin fault{ hal::tiva::Port::E, 0 };
+        };
+
+        struct HwQuadratureInterface0
+        {
+            hal::tiva::GpioPin phaseA{ hal::tiva::Port::D, 6 };
+            hal::tiva::GpioPin phaseB{ hal::tiva::Port::D, 7 };
+            hal::tiva::GpioPin index{ hal::tiva::Port::D, 3 };
+        };
+
+        struct HwQuadratureInterface1
+        {
+            hal::tiva::GpioPin phaseA{ hal::tiva::Port::C, 5 };
+            hal::tiva::GpioPin phaseB{ hal::tiva::Port::C, 6 };
+            hal::tiva::GpioPin index{ hal::tiva::Port::C, 4 };
+        };
+
         instantiations::EventInfrastructure eventInfrastructure;
         infra::Optional<instantiations::LaunchPadUi> ui;
         infra::Optional<instantiations::LaunchPadTerminalAndTracer> tracer;
@@ -38,14 +80,14 @@ namespace application
         hal::tiva::GpioPin& terminalUartTx = hal::tiva::dummyPin;
         hal::tiva::GpioPin terminalUartRx{ hal::tiva::Port::A, 0 };
 
-        hal::tiva::GpioPin reset{ hal::tiva::Port::D, 7 };
-        hal::tiva::GpioPin dataOrCommand{ hal::tiva::Port::A, 5 };
-        hal::tiva::GpioPin backLightDefinition{ hal::tiva::Port::F, 2 };
+        HwSsd2119 hwSsd2119;
+        HwDrv8711 hwDrv8711;
+        HwQuadratureInterface0 qei0;
+        HwQuadratureInterface0 qei1;
 
         hal::tiva::GpioPin clock{ hal::tiva::Port::B, 4 };
         hal::tiva::GpioPin miso{ hal::tiva::Port::B, 6 };
         hal::tiva::GpioPin mosi{ hal::tiva::Port::B, 7 };
-        hal::tiva::GpioPin chipSelect{ hal::tiva::Port::A, 4 };
 
         hal::tiva::SynchronousSpiMaster::Config spiConfig{ true, true, 20000000 };
         infra::Optional<hal::tiva::SynchronousSpiMaster> spi;
@@ -53,6 +95,7 @@ namespace application
         infra::Optional<hal::OutputPin> backLight;
         drivers::display::tft::Ssd2119Sync::Config displayConfig;
         infra::Optional<drivers::display::tft::Ssd2119Sync> display;
+        infra::Optional<drivers::stepper_motor::Drv8711Sync> drv8711;
     };
 }
 
