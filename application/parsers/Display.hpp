@@ -9,19 +9,21 @@
 namespace application::parsers
 {
     class Display
-        : public services::TerminalCommands
+        : public services::TerminalCommandsAndMenu
     {
     public:
-        Display(services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight);
+        Display(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight);
         virtual ~Display() = default;
 
         infra::MemoryRange<const services::TerminalCommands::Command> Commands() override;
+        MenuInfo& Menu() override;
 
     private:
         void GetDimensions(const infra::BoundedConstString& params);
         void Backlight(const infra::BoundedConstString& params);
         void DrawBackground(const infra::BoundedConstString& params);
 
+        MenuInfo menu;
         services::TerminalWithCommands& terminal;
         services::Tracer& tracer;
         hal::DisplayLcd& display;

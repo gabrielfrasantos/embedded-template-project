@@ -22,7 +22,7 @@ namespace application
         void Initialize(const infra::Function<void()>& onDone) override;
         infra::EventDispatcherWithWeakPtr& EventDispatcher() override;
         services::Tracer& Tracer() override;
-        services::TerminalWithCommands& Terminal() override;
+        services::TerminalWithMenu& Terminal() override;
         hal::GpioPin& DebugLed() override;
 
         hal::DisplayLcd& Display() override;
@@ -70,12 +70,13 @@ namespace application
             hal::tiva::GpioPin index{ hal::tiva::Port::C, 4 };
         };
 
+        infra::Function<void()> onDone;
         instantiations::EventInfrastructure eventInfrastructure;
         infra::Optional<instantiations::LaunchPadUi> ui;
         infra::Optional<instantiations::LaunchPadTerminalAndTracer> tracer;
         hal::tiva::Uart::Config terminalUartConfig;
         infra::Optional<hal::tiva::Uart> terminalUart;
-        infra::Optional<services::TerminalWithCommandsImpl> terminal;
+        infra::Optional<services::TerminalWithMenu> terminal;
 
         hal::tiva::GpioPin& terminalUartTx = hal::tiva::dummyPin;
         hal::tiva::GpioPin terminalUartRx{ hal::tiva::Port::A, 0 };

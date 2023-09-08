@@ -2,6 +2,7 @@
 #include "application/hardware_abstraction/Hal.hpp"
 #include "application/parsers/Display.hpp"
 #include "services/util/DebugLed.hpp"
+#include "services/util/Terminal.hpp"
 
 int main()
 {
@@ -9,13 +10,14 @@ int main()
 
     hw.Initialize([]()
         {
-            static services::DebugLed debugLed(hw.DebugLed(), std::chrono::milliseconds(100), std::chrono::milliseconds(1400));
-
             hw.Tracer().Trace() << "------------";
             hw.Tracer().Trace() << "|   TEST   |";
             hw.Tracer().Trace() << "------------";
 
-            static application::parsers::Display parserDisplay(hw.Terminal(), hw.Tracer(), hw.Display(), hw.DisplayBackLight());
+            static services::DebugLed debugLed(hw.DebugLed(), std::chrono::milliseconds(100), std::chrono::milliseconds(1400));
+            static application::parsers::Display parserDisplay("display", "Main display", hw.Terminal(), hw.Tracer(), hw.Display(), hw.DisplayBackLight());
+
+            hw.Terminal().AddMenu(parserDisplay.Menu());
         });
 
     hw.EventDispatcher().Run();

@@ -3,8 +3,9 @@
 
 namespace application::parsers
 {
-    Display::Display(services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight)
-        : services::TerminalCommands(terminal)
+    Display::Display(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight)
+        : services::TerminalCommandsAndMenu(terminal)
+        , menu(name, description, *this)
         , terminal(terminal)
         , tracer(tracer)
         , display(display)
@@ -13,7 +14,7 @@ namespace application::parsers
 
     infra::MemoryRange<const services::TerminalCommands::Command> Display::Commands()
     {
-        static const std::array<Command, 4> commands = { { { { "d", "dim", "Display dimensions width,height" }, [this]([[maybe_unused]] const infra::BoundedConstString& params)
+        static const std::array<Command, 4> commands = { { { { "d", "dim", "Show display dimensions [width, height] pixels" }, [this]([[maybe_unused]] const infra::BoundedConstString& params)
                                                                {
                                                                    this->GetDimensions(params);
                                                                } },
@@ -30,6 +31,11 @@ namespace application::parsers
                 } } } };
 
         return infra::MakeRange(commands);
+    }
+
+    services::TerminalCommandsAndMenu::MenuInfo& Display::Menu()
+    {
+        return menu;
     }
 
     void Display::GetDimensions(const infra::BoundedConstString& params)

@@ -16,7 +16,7 @@ namespace application
         virtual void Initialize(const infra::Function<void()>& onDone) = 0;
         virtual infra::EventDispatcherWithWeakPtr& EventDispatcher() = 0;
         virtual services::Tracer& Tracer() = 0;
-        virtual services::TerminalWithCommands& Terminal() = 0;
+        virtual services::TerminalWithMenu& Terminal() = 0;
         virtual hal::GpioPin& DebugLed() = 0;
 
         virtual hal::DisplayLcd& Display() = 0;

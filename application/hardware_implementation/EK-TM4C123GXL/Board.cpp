@@ -4,6 +4,7 @@ namespace application
 {
     void HardwareImplementation::Initialize(const infra::Function<void()>& onDone)
     {
+        this->onDone = onDone;
         hal::tiva::ConfigureClock(hal::tiva::crystalFrequency::_16_MHz, hal::tiva::oscillatorSource::main);
 
         terminalUartConfig.enableTx = false;
@@ -16,9 +17,9 @@ namespace application
         backLight.Emplace(hwSsd2119.backLight);
         spi.Emplace(2, clock, miso, mosi, spiConfig);
         display.Emplace(
-            *spi, hwSsd2119.chipSelect, hwSsd2119.reset, hwSsd2119.dataOrCommand, [this, &onDone]()
+            *spi, hwSsd2119.chipSelect, hwSsd2119.reset, hwSsd2119.dataOrCommand, [this]()
             {
-                drv8711.Emplace(*spi, hwDrv8711.chipSelect, hwDrv8711.reset, hwDrv8711.sleep, onDone);
+                drv8711.Emplace(*spi, hwDrv8711.chipSelect, hwDrv8711.reset, hwDrv8711.sleep, this->onDone);
             },
             displayConfig);
     }
@@ -33,7 +34,7 @@ namespace application
         return tracer->tracerInfrastructure.tracer;
     }
 
-    services::TerminalWithCommands& HardwareImplementation::Terminal()
+    services::TerminalWithMenu& HardwareImplementation::Terminal()
     {
         return *terminal;
     }
