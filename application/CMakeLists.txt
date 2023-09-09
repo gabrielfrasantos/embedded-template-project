@@ -6,7 +6,6 @@ target_link_libraries(reference_project.application PRIVATE
     services.util
     hal_tiva.instantiations
     hal_tiva.tiva
-    drivers.display.tft
     reference_project.application.hardware_abstraction
     reference_project.application.hardware_implementation
     reference_project.application.parsers

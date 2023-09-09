@@ -10,9 +10,14 @@ target_link_libraries(reference_project.application.parsers PUBLIC
     hal.interfaces
     infra.util
     services.util
+    drivers.stepper_motor
 )
 
 target_sources(reference_project.application.parsers PRIVATE
     Display.cpp
     Display.hpp
+    DriverDrv8711.cpp
+    DriverDrv8711.hpp
+    QuadratureEncoder.cpp
+    QuadratureEncoder.hpp
 )

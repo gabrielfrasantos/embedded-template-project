@@ -1,5 +1,4 @@
 #include "application/parsers/Display.hpp"
-#include "infra/util/Optional.hpp"
 
 namespace application::parsers
 {
@@ -14,6 +13,7 @@ namespace application::parsers
 
     infra::MemoryRange<const services::TerminalCommands::Command> Display::Commands()
     {
+        //clang-format off
         static const std::array<Command, 4> commands = { { { { "d", "dim", "Show display dimensions [width, height] pixels" }, [this]([[maybe_unused]] const infra::BoundedConstString& params)
                                                                {
                                                                    this->GetDimensions(params);
@@ -29,6 +29,7 @@ namespace application::parsers
                 {
                     this->DrawBackground(params);
                 } } } };
+        //clang-format on
 
         return infra::MakeRange(commands);
     }
