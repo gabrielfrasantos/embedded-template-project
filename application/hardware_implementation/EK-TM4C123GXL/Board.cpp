@@ -16,6 +16,8 @@ namespace application
 
         backLight.Emplace(hwSsd2119.backLight);
         spi.Emplace(2, clock, miso, mosi, spiConfig);
+        userEncoder.Emplace(qei0.peripheralIndex, qei0.phaseA, qei0.phaseB, qei0.index, userEncoderConfig);
+        motorEncoder.Emplace(qei1.peripheralIndex, qei1.phaseA, qei1.phaseB, qei1.index, motorEncoderConfig);
         display.Emplace(
             *spi, hwSsd2119.chipSelect, hwSsd2119.reset, hwSsd2119.dataOrCommand, [this]()
             {
@@ -57,5 +59,15 @@ namespace application
     drivers::stepper_motor::Drv8711Sync& HardwareImplementation::DriverDrv8711()
     {
         return *drv8711;
+    }
+
+    hal::QuadratureEncoder& HardwareImplementation::EncoderMotor()
+    {
+        return *userEncoder;
+    }
+
+    hal::QuadratureEncoder& HardwareImplementation::EncoderUser()
+    {
+        return *motorEncoder;
     }
 }

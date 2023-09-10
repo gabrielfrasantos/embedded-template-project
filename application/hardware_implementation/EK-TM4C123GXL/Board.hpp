@@ -8,6 +8,7 @@
 #include "hal_tiva/instantiations/LaunchPadBsp.hpp"
 #include "hal_tiva/synchronous_tiva/SynchronousSpiMaster.hpp"
 #include "hal_tiva/tiva/Clock.hpp"
+#include "hal_tiva/tiva/QuadratureEncoder.hpp"
 #include "hal_tiva/tiva/Uart.hpp"
 #include "infra/util/Optional.hpp"
 
@@ -28,6 +29,8 @@ namespace application
         hal::DisplayLcd& Display() override;
         hal::OutputPin& DisplayBackLight() override;
         drivers::stepper_motor::Drv8711Sync& DriverDrv8711();
+        hal::QuadratureEncoder& EncoderMotor() override;
+        hal::QuadratureEncoder& EncoderUser() override;
 
     private:
         struct HwSsd2119
@@ -58,6 +61,7 @@ namespace application
 
         struct HwQuadratureInterface0
         {
+            const uint8_t peripheralIndex = 0;
             hal::tiva::GpioPin phaseA{ hal::tiva::Port::D, 6 };
             hal::tiva::GpioPin phaseB{ hal::tiva::Port::D, 7 };
             hal::tiva::GpioPin index{ hal::tiva::Port::D, 3 };
@@ -65,6 +69,7 @@ namespace application
 
         struct HwQuadratureInterface1
         {
+            const uint8_t peripheralIndex = 1;
             hal::tiva::GpioPin phaseA{ hal::tiva::Port::C, 5 };
             hal::tiva::GpioPin phaseB{ hal::tiva::Port::C, 6 };
             hal::tiva::GpioPin index{ hal::tiva::Port::C, 4 };
@@ -84,7 +89,7 @@ namespace application
         HwSsd2119 hwSsd2119;
         HwDrv8711 hwDrv8711;
         HwQuadratureInterface0 qei0;
-        HwQuadratureInterface0 qei1;
+        HwQuadratureInterface1 qei1;
 
         hal::tiva::GpioPin clock{ hal::tiva::Port::B, 4 };
         hal::tiva::GpioPin miso{ hal::tiva::Port::B, 6 };
@@ -97,6 +102,10 @@ namespace application
         infra::Optional<hal::OutputPin> backLight;
         infra::Optional<drivers::display::tft::Ssd2119Sync> display;
         infra::Optional<drivers::stepper_motor::Drv8711Sync> drv8711;
+        hal::tiva::QuadratureEncoder::Config userEncoderConfig;
+        hal::tiva::QuadratureEncoder::Config motorEncoderConfig;
+        infra::Optional<hal::tiva::QuadratureEncoder> userEncoder;
+        infra::Optional<hal::tiva::QuadratureEncoder> motorEncoder;
     };
 }
 
