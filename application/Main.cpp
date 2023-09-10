@@ -12,9 +12,12 @@ int main()
 
     hw.Initialize([]()
         {
-            hw.Tracer().Trace() << "------------";
-            hw.Tracer().Trace() << "|   TEST   |";
-            hw.Tracer().Trace() << "------------";
+            hw.Tracer().Trace() << "--------------------------------------------------------";
+            hw.Tracer().Trace() << " application name    : " << infra::Width(32, ' ') << "reference project";
+            hw.Tracer().Trace() << " version             : " << infra::Width(32, ' ') << "0.0.0";
+            hw.Tracer().Trace() << " commit              : " << infra::Width(32, ' ') << "deadbeef";
+            hw.Tracer().Trace() << " hardware            : " << infra::Width(32, ' ') << "ek-tm4c123g-custom";
+            hw.Tracer().Trace() << "--------------------------------------------------------";
 
             static services::DebugLed debugLed(hw.DebugLed(), std::chrono::milliseconds(100), std::chrono::milliseconds(1400));
             static application::parsers::Display parserDisplay("display", "Main display", hw.Terminal(), hw.Tracer(), hw.Display(), hw.DisplayBackLight());
@@ -30,6 +33,8 @@ int main()
             hw.Terminal().AddMenu(parserDrv8711.Menu());
             hw.Terminal().AddMenu(parserQuadratureEncoderMotor.Menu());
             hw.Terminal().AddMenu(parserQuadratureEncoderUser.Menu());
+
+            hw.Terminal().PrintHelp();
         });
 
     hw.EventDispatcher().Run();

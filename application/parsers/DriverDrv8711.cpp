@@ -398,7 +398,6 @@ namespace application::parsers
                 this->tracer.Trace() << "\tStall detection  : " << reg.stallDetection;
                 this->tracer.Trace() << "\tAmplifier gain   : " << reg.amplifierGain;
                 this->tracer.Trace() << "\tDead time        : " << reg.deadTime;
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -409,7 +408,6 @@ namespace application::parsers
                 this->tracer.Trace() << "Register Torque";
                 this->tracer.Trace() << "\tBack EMF Sample Threshold : " << reg.backEMFSampleThreshold;
                 this->tracer.Trace() << "\tTorque                    : " << reg.fullScaleCurrent;
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -420,7 +418,6 @@ namespace application::parsers
                 this->tracer.Trace() << "Register Off";
                 this->tracer.Trace() << "\tPWM mode       : " << reg.pwmMode;
                 this->tracer.Trace() << "\tFixed off time : " << reg.FixedOffTimeInNanoSeconds() << " ns";
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -431,7 +428,6 @@ namespace application::parsers
                 this->tracer.Trace() << "Register Blank";
                 this->tracer.Trace() << "\tAdaptive blank time enabled? : " << reg.adaptativeBlankingTime;
                 this->tracer.Trace() << "\tCurrent trip blanking time   : " << reg.BlankingTimeInNanoSeconds() << " ns";
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -442,7 +438,6 @@ namespace application::parsers
                 this->tracer.Trace() << "Register Decay";
                 this->tracer.Trace() << "\tDecay mode                   : " << reg.mode;
                 this->tracer.Trace() << "\tMixed decay transition time  : " << reg.DecayTransitionTimeInNanoSeconds() << " ns";
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -454,7 +449,6 @@ namespace application::parsers
                 this->tracer.Trace() << "\tStall detect threshold : " << reg.detectionThreshold;
                 this->tracer.Trace() << "\tStall assertion        : " << reg.assertCounter;
                 this->tracer.Trace() << "\tBack EMF division      : 0x" << infra::hex << reg.backEMFDivisor;
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -469,7 +463,6 @@ namespace application::parsers
                 this->tracer.Trace() << "\tHigh side gate drive time        : " << reg.highSideGateDriveTime;
                 this->tracer.Trace() << "\tLow side gate drive peak current : " << reg.lowSideGateDrivePeakCurrent;
                 this->tracer.Trace() << "\tHigh side gate drive peak current: " << reg.highSideGateDrivePeakCurrent;
-                this->tracer.Trace() << "\r\n";
             });
     }
 
@@ -485,7 +478,6 @@ namespace application::parsers
                 this->tracer.Trace() << "\tChannel B predriver  : " << reg.channelBPreDriveFault;
                 this->tracer.Trace() << "\tUndervoltage         : " << reg.underVoltageLockout;
                 this->tracer.Trace() << "\tStall detected       : " << reg.stallDetected;
-                this->tracer.Trace() << "\r\n";
             });
     }
 }
