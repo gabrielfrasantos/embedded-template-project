@@ -22,17 +22,6 @@
       }
     },
     {
-      "name": "Package",
-      "displayName": "Configuration for CPack package generation",
-      "inherits": "defaults",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "MinSizeRel",
-        "EMIL_ENABLE_DOCKER_TOOLS": "Off",
-        "EMIL_BUILD_TESTS": "Off",
-        "EMIL_BUILD_EXAMPLES": "Off"
-      }
-    },
-    {
       "name": "Coverage",
       "displayName": "Configuration for Code Coverage",
       "inherits": "ContinuousIntegration",
@@ -121,18 +110,6 @@
       "name": "ContinuousIntegration",
       "configuration": "Debug",
       "configurePreset": "ContinuousIntegration"
-    },
-    {
-      "name": "ContinuousIntegrationWithPackage",
-      "configuration": "Debug",
-      "configurePreset": "ContinuousIntegration",
-      "targets": ["all", "package"]
-    },
-    {
-      "name": "Package",
-      "configuration": "MinSizeRel",
-      "configurePreset": "Package",
-      "targets": ["package"]
     },
     {
       "name": "Coverage",
