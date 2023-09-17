@@ -11,11 +11,13 @@ target_link_libraries(reference_project.application PRIVATE
     reference_project.application.parsers
 )
 
-hal_ti_target_default_linker_scripts(reference_project.application)
-hal_ti_target_default_init(reference_project.application)
-
 add_subdirectory(hardware_abstraction)
 add_subdirectory(hardware_implementation)
 add_subdirectory(parsers)
+
+if (TARGET_MCU_VENDOR STREQUAL "ti")
+    hal_ti_target_default_linker_scripts(reference_project.application)
+    hal_ti_target_default_init(reference_project.application)
+endif()
 
 emil_generate_artifacts(TARGET reference_project.application LST MAP BIN HEX)

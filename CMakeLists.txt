@@ -17,7 +17,9 @@ add_subdirectory(embedded-infra)
 add_subdirectory(drivers)
 
 if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
-    add_subdirectory(arch/hal/${TARGET_MCU_VENDOR})
+    if (TARGET_MCU_VENDOR)
+        add_subdirectory(arch/hal/${TARGET_MCU_VENDOR})
+    endif()
 
     if (REFERENCE_PROJECT_ENABLE_FILESYSTEM)
         add_subdirectory(implementations/filesystem)
