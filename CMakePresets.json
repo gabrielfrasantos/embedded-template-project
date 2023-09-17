@@ -18,7 +18,8 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "EMIL_ENABLE_DOCKER_TOOLS": "Off",
-        "EMIL_BUILD_EXAMPLES": "On"
+        "EMIL_BUILD_EXAMPLES": "On",
+        "EMIL_BUILD_TESTS": "On"
       }
     },
     {
