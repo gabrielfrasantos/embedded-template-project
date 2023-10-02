@@ -35,44 +35,45 @@ namespace application
     private:
         struct HwSsd2119
         {
-            hal::tiva::GpioPin reset{ hal::tiva::Port::B, 0 };
-            hal::tiva::GpioPin dataOrCommand{ hal::tiva::Port::B, 1 };
-            hal::tiva::GpioPin backLight{ hal::tiva::Port::F, 2 };
+            hal::tiva::GpioPin reset{ hal::tiva::Port::K, 6 };
+            hal::tiva::GpioPin dataOrCommand{ hal::tiva::Port::P, 4 };
+            hal::tiva::GpioPin backLight{ hal::tiva::Port::G, 1 };
 
-            hal::tiva::GpioPin chipSelect{ hal::tiva::Port::E, 4 };
+            hal::tiva::GpioPin chipSelect{ hal::tiva::Port::P, 3 };
 
-            // variant<Gpio, Pwm> a1_step
-            // variant<Gpio, Pwm> a2_direction
-            // variant<Gpio, Pwm> b1
-            // variant<Gpio, Pwm> b2
+            hal::tiva::GpioPin clock{ hal::tiva::Port::Q, 0 };
+            hal::tiva::GpioPin miso{ hal::tiva::Port::Q, 2 };
+            hal::tiva::GpioPin mosi{ hal::tiva::Port::Q, 3 };
+
+            hal::tiva::SynchronousSpiMaster::Config spiConfig{ true, true, 20000000 };
+            infra::Optional<hal::tiva::SynchronousSpiMaster> spi;
         };
 
         struct HwDrv8711
         {
-            hal::tiva::GpioPin reset{ hal::tiva::Port::A, 5 };
+            hal::tiva::GpioPin reset{ hal::tiva::Port::C, 7 };
             hal::tiva::GpioPin sleep{ hal::tiva::Port::E, 5 };
-            hal::tiva::GpioPin direction{ hal::tiva::Port::F, 2 };
+            hal::tiva::GpioPin direction{ hal::tiva::Port::B, 3 };
 
-            hal::tiva::GpioPin chipSelect{ hal::tiva::Port::A, 2 };
+            hal::tiva::GpioPin chipSelect{ hal::tiva::Port::P, 2 };
 
-            hal::tiva::GpioPin stallDetection{ hal::tiva::Port::B, 2 };
-            hal::tiva::GpioPin fault{ hal::tiva::Port::E, 0 };
+            hal::tiva::GpioPin stallDetection{ hal::tiva::Port::M, 3 };
+            hal::tiva::GpioPin fault{ hal::tiva::Port::H, 2 };
+
+            hal::tiva::GpioPin clock{ hal::tiva::Port::D, 3 };
+            hal::tiva::GpioPin miso{ hal::tiva::Port::D, 1 };
+            hal::tiva::GpioPin mosi{ hal::tiva::Port::D, 0 };
+
+            hal::tiva::SynchronousSpiMaster::Config spiConfig{ true, true, 20000000 };
+            infra::Optional<hal::tiva::SynchronousSpiMaster> spi;
         };
 
         struct HwQuadratureInterface0
         {
             const uint8_t peripheralIndex = 0;
-            hal::tiva::GpioPin phaseA{ hal::tiva::Port::D, 6 };
-            hal::tiva::GpioPin phaseB{ hal::tiva::Port::D, 7 };
-            hal::tiva::GpioPin index{ hal::tiva::Port::D, 3 };
-        };
-
-        struct HwQuadratureInterface1
-        {
-            const uint8_t peripheralIndex = 1;
-            hal::tiva::GpioPin phaseA{ hal::tiva::Port::C, 5 };
-            hal::tiva::GpioPin phaseB{ hal::tiva::Port::C, 6 };
-            hal::tiva::GpioPin index{ hal::tiva::Port::C, 4 };
+            hal::tiva::GpioPin phaseA{ hal::tiva::Port::L, 1 };
+            hal::tiva::GpioPin phaseB{ hal::tiva::Port::L, 2 };
+            hal::tiva::GpioPin index{ hal::tiva::Port::L, 3 };
         };
 
         infra::Function<void()> onDone;
@@ -89,14 +90,6 @@ namespace application
         HwSsd2119 hwSsd2119;
         HwDrv8711 hwDrv8711;
         HwQuadratureInterface0 qei0;
-        HwQuadratureInterface1 qei1;
-
-        hal::tiva::GpioPin clock{ hal::tiva::Port::B, 4 };
-        hal::tiva::GpioPin miso{ hal::tiva::Port::B, 6 };
-        hal::tiva::GpioPin mosi{ hal::tiva::Port::B, 7 };
-
-        hal::tiva::SynchronousSpiMaster::Config spiConfig{ true, true, 20000000 };
-        infra::Optional<hal::tiva::SynchronousSpiMaster> spi;
 
         drivers::display::tft::Ssd2119Sync::Config displayConfig;
         infra::Optional<hal::OutputPin> backLight;
