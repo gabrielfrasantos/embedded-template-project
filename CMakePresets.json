@@ -104,6 +104,20 @@
         "DRIVERS_INCLUDE_DRIVER_STEPPER_MOTOR": "On",
         "REFERENCE_PROJECT_BOARD": "EK-TM4C123GXL"
       }
+    },
+    {
+      "name": "EK-TM4C1294XL-Custom",
+      "displayName": "EK-TM4C1294XL-Custom",
+      "description": "Configuration for EK-TM4C1294XL custom - Boost-DRV8711 and BOOSTXL-key60QVG-S1",
+      "inherits": "Embedded-CortexM4",
+      "cacheVariables": {
+        "TARGET_MCU_VENDOR": "ti",
+        "TARGET_MCU_FAMILY": "TM4C129",
+        "TARGET_MCU": "tm4c1294ncpdt",
+        "DRIVERS_INCLUDE_DISPLAY_TFT": "On",
+        "DRIVERS_INCLUDE_DRIVER_STEPPER_MOTOR": "On",
+        "REFERENCE_PROJECT_BOARD": "EK-TM4C1294XL"
+      }
     }
   ],
   "buildPresets": [
@@ -176,6 +190,26 @@
       "name": "EK-TM4C123GXL-Custom-MinSizeRel",
       "configuration": "MinSizeRel",
       "configurePreset": "EK-TM4C123GXL-Custom"
+    },
+    {
+      "name": "EK-TM4C1294XL-Custom-Debug",
+      "configuration": "Debug",
+      "configurePreset": "EK-TM4C1294XL-Custom"
+    },
+    {
+      "name": "EK-TM4C1294XL-Custom-Release",
+      "configuration": "Release",
+      "configurePreset": "EK-TM4C1294XL-Custom"
+    },
+    {
+      "name": "EK-TM4C1294XL-Custom-RelWithDebInfo",
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "EK-TM4C1294XL-Custom"
+    },
+    {
+      "name": "EK-TM4C1294XL-Custom-MinSizeRel",
+      "configuration": "MinSizeRel",
+      "configurePreset": "EK-TM4C1294XL-Custom"
     }
   ],
   "testPresets": [

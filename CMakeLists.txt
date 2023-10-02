@@ -16,6 +16,10 @@ set_directory_properties(PROPERTY USE_FOLDERS ON)
 add_subdirectory(embedded-infra)
 add_subdirectory(drivers)
 
+if (REFERENCE_PROJECT_ENABLE_TESTS)
+    emil_enable_testing()
+endif()
+
 if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
     if (TARGET_MCU_VENDOR)
         add_subdirectory(arch/hal/${TARGET_MCU_VENDOR})

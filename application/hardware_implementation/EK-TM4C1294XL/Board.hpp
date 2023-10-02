@@ -1,5 +1,5 @@
-#ifndef APPLICATION_HARDWARE_IMPLEMENTATION_EK_TM4C123GXL_H
-#define APPLICATION_HARDWARE_IMPLEMENTATION_EK_TM4C123GXL_H
+#ifndef APPLICATION_HARDWARE_IMPLEMENTATION_EK_TM4C1294XL_H
+#define APPLICATION_HARDWARE_IMPLEMENTATION_EK_TM4C1294XL_H
 
 #include "application/hardware_abstraction/Hal.hpp"
 #include "drivers/display/tft/Ssd2119.hpp"
@@ -7,7 +7,7 @@
 #include "hal_tiva/instantiations/EventInfrastructure.hpp"
 #include "hal_tiva/instantiations/LaunchPadBsp.hpp"
 #include "hal_tiva/synchronous_tiva/SynchronousSpiMaster.hpp"
-#include "hal_tiva/tiva/ClockTm4c123.hpp"
+#include "hal_tiva/tiva/ClockTm4c129.hpp"
 #include "hal_tiva/tiva/QuadratureEncoder.hpp"
 #include "hal_tiva/tiva/Uart.hpp"
 #include "infra/util/Optional.hpp"
@@ -28,7 +28,7 @@ namespace application
 
         hal::DisplayLcd& Display() override;
         hal::OutputPin& DisplayBackLight() override;
-        drivers::stepper_motor::Drv8711Sync& DriverDrv8711();
+        drivers::stepper_motor::Drv8711Sync& DriverDrv8711() override;
         hal::QuadratureEncoder& EncoderMotor() override;
         hal::QuadratureEncoder& EncoderUser() override;
 

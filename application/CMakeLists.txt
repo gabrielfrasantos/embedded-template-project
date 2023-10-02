@@ -15,6 +15,10 @@ add_subdirectory(hardware_abstraction)
 add_subdirectory(hardware_implementation)
 add_subdirectory(parsers)
 
+if (REFERENCE_PROJECT_ENABLE_TESTS)
+    add_subdirectory(test)
+endif()
+
 if (TARGET_MCU_VENDOR STREQUAL "ti")
     hal_ti_target_default_linker_scripts(reference_project.application)
     hal_ti_target_default_init(reference_project.application)
