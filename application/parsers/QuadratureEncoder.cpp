@@ -2,13 +2,15 @@
 
 namespace application::parsers
 {
-    QuadratureEncoder::QuadratureEncoder(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::QuadratureEncoder& quadratureEncoder)
+    QuadratureEncoder::QuadratureEncoder(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithMenu& terminal, services::Tracer& tracer, hal::QuadratureEncoder& quadratureEncoder)
         : services::TerminalCommandsAndMenu(terminal)
         , menu(name, description, *this)
         , terminal(terminal)
         , tracer(tracer)
         , quadratureEncoder(quadratureEncoder)
-    {}
+    {
+        terminal.AddMenu(menu);
+    }
 
     infra::MemoryRange<const services::TerminalCommands::Command> QuadratureEncoder::Commands()
     {

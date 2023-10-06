@@ -13,6 +13,10 @@
 
 namespace application
 {
+    /*
+    TODO: Add return: OptionalForPolymorphicObjects
+    */
+
     class HardwareAbstraction
     {
     public:

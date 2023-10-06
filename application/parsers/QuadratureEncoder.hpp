@@ -11,7 +11,7 @@ namespace application::parsers
         : public services::TerminalCommandsAndMenu
     {
     public:
-        QuadratureEncoder(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::QuadratureEncoder& quadratureEncoder);
+        QuadratureEncoder(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithMenu& terminal, services::Tracer& tracer, hal::QuadratureEncoder& quadratureEncoder);
         virtual ~QuadratureEncoder() = default;
 
         infra::MemoryRange<const services::TerminalCommands::Command> Commands() override;
@@ -19,7 +19,7 @@ namespace application::parsers
 
     private:
         MenuInfo menu;
-        services::TerminalWithCommands& terminal;
+        services::TerminalWithMenu& terminal;
         services::Tracer& tracer;
         hal::QuadratureEncoder& quadratureEncoder;
 

@@ -12,7 +12,7 @@ namespace application::parsers
         : public services::TerminalCommandsAndMenu
     {
     public:
-        Display(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight);
+        Display(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithMenu& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight);
         virtual ~Display() = default;
 
         infra::MemoryRange<const services::TerminalCommands::Command> Commands() override;
@@ -24,7 +24,7 @@ namespace application::parsers
         void DrawBackground(const infra::BoundedConstString& params);
 
         MenuInfo menu;
-        services::TerminalWithCommands& terminal;
+        services::TerminalWithMenu& terminal;
         services::Tracer& tracer;
         hal::DisplayLcd& display;
         hal::OutputPin& backlight;

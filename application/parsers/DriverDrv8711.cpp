@@ -332,13 +332,15 @@ namespace infra
 
 namespace application::parsers
 {
-    Drv8711::Drv8711(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, drivers::stepper_motor::Drv8711Sync& drv8711)
+    Drv8711::Drv8711(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithMenu& terminal, services::Tracer& tracer, drivers::stepper_motor::Drv8711Sync& drv8711)
         : services::TerminalCommandsAndMenu(terminal)
         , menu(name, description, *this)
         , terminal(terminal)
         , tracer(tracer)
         , drv8711(drv8711)
-    {}
+    {
+        terminal.AddMenu(menu);
+    }
 
     infra::MemoryRange<const services::TerminalCommands::Command> Drv8711::Commands()
     {

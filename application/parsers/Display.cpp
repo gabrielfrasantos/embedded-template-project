@@ -2,14 +2,16 @@
 
 namespace application::parsers
 {
-    Display::Display(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight)
+    Display::Display(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithMenu& terminal, services::Tracer& tracer, hal::DisplayLcd& display, hal::OutputPin& backlight)
         : services::TerminalCommandsAndMenu(terminal)
         , menu(name, description, *this)
         , terminal(terminal)
         , tracer(tracer)
         , display(display)
         , backlight(backlight)
-    {}
+    {
+        terminal.AddMenu(menu);
+    }
 
     infra::MemoryRange<const services::TerminalCommands::Command> Display::Commands()
     {

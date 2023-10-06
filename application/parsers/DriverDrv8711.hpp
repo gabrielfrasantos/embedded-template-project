@@ -11,7 +11,7 @@ namespace application::parsers
         : public services::TerminalCommandsAndMenu
     {
     public:
-        Drv8711(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithCommands& terminal, services::Tracer& tracer, drivers::stepper_motor::Drv8711Sync& drv8711);
+        Drv8711(infra::BoundedConstString name, infra::BoundedConstString description, services::TerminalWithMenu& terminal, services::Tracer& tracer, drivers::stepper_motor::Drv8711Sync& drv8711);
         virtual ~Drv8711() = default;
 
         infra::MemoryRange<const services::TerminalCommands::Command> Commands() override;
@@ -19,7 +19,7 @@ namespace application::parsers
 
     private:
         MenuInfo menu;
-        services::TerminalWithCommands& terminal;
+        services::TerminalWithMenu& terminal;
         services::Tracer& tracer;
         drivers::stepper_motor::Drv8711Sync& drv8711;
 
