@@ -77,7 +77,7 @@ namespace application
         };
 
         infra::Function<void()> onDone;
-        instantiations::EventInfrastructure eventInfrastructure;
+        infra::Optional<instantiations::EventInfrastructure> eventInfrastructure;
         infra::Optional<instantiations::LaunchPadUi> ui;
         infra::Optional<instantiations::LaunchPadTerminalAndTracer> tracer;
         hal::tiva::Uart::Config terminalUartConfig;

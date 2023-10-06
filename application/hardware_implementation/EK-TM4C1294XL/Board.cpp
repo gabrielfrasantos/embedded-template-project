@@ -7,6 +7,8 @@ namespace application
         this->onDone = onDone;
         hal::tiva::ConfigureClock(120000000, hal::tiva::crystalFrequency::_25_MHz);
 
+        eventInfrastructure.Emplace();
+
         terminalUartConfig.enableTx = false;
 
         ui.Emplace();
@@ -28,7 +30,7 @@ namespace application
 
     infra::EventDispatcherWithWeakPtr& HardwareImplementation::EventDispatcher()
     {
-        return eventInfrastructure.eventDispatcher;
+        return eventInfrastructure->eventDispatcher;
     }
 
     services::Tracer& HardwareImplementation::Tracer()
