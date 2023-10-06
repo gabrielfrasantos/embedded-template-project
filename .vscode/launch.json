@@ -41,5 +41,37 @@
       "interface": "swd",
       "device": "TM4C1294NCPDT"
     },
+    {
+      "name": "EK-TM4C123GXL-custom (Docker)",
+      "cwd": "${workspaceRoot}",
+      "request": "launch",
+      "executable": "${command:cmake.launchTargetPath}",
+      "type": "cortex-debug",
+      "servertype": "external",
+      "gdbTarget": "host.docker.internal:2334",
+      "showDevDebugOutput": "parsed",
+      "overrideLaunchCommands": [
+        "monitor reset",
+        "-target-download",
+        "monitor reset"
+      ],
+      "overrideRestartCommands": ["monitor reset"]
+    },
+    {
+      "name": "EK-TM4C1294XL-custom (Docker)",
+      "cwd": "${workspaceRoot}",
+      "request": "launch",
+      "executable": "${command:cmake.launchTargetPath}",
+      "type": "cortex-debug",
+      "servertype": "external",
+      "gdbTarget": "host.docker.internal:2331",
+      "showDevDebugOutput": "parsed",
+      "overrideLaunchCommands": [
+        "monitor reset",
+        "-target-download",
+        "monitor reset"
+      ],
+      "overrideRestartCommands": ["monitor reset"]
+    },
   ]
 }
