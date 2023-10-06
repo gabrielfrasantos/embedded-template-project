@@ -7,6 +7,7 @@
 #include "hal/interfaces/QuadratureEncoder.hpp"
 #include "infra/event/EventDispatcherWithWeakPtr.hpp"
 #include "infra/util/Function.hpp"
+#include "services/network/Connection.hpp"
 #include "services/tracer/TracerWithDateTime.hpp"
 #include "services/util/Terminal.hpp"
 
@@ -26,6 +27,7 @@ namespace application
         virtual drivers::stepper_motor::Drv8711Sync& DriverDrv8711() = 0;
         virtual hal::QuadratureEncoder& EncoderMotor() = 0;
         virtual hal::QuadratureEncoder& EncoderUser() = 0;
+        virtual services::ConnectionFactory& ConnectionFactory() = 0;
     };
 }
 

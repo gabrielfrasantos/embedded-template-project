@@ -6,6 +6,7 @@ target_link_libraries(reference_project.application.hardware_abstraction INTERFA
     hal.interfaces
     services.util
     services.tracer
+    services.network
 )
 
 target_sources(reference_project.application.hardware_abstraction INTERFACE
