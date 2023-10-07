@@ -13,12 +13,13 @@ option(REFERENCE_PROJECT_ENABLE_STM32_USB "Enable embedded immplementation of US
 
 set_directory_properties(PROPERTY USE_FOLDERS ON)
 
+if (REFERENCE_PROJECT_ENABLE_TESTS)
+    include(CTest)
+    enable_testing()
+endif()
+
 add_subdirectory(embedded-infra)
 add_subdirectory(drivers)
-
-if (REFERENCE_PROJECT_ENABLE_TESTS)
-    emil_enable_testing()
-endif()
 
 if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
     if (TARGET_MCU_VENDOR)
