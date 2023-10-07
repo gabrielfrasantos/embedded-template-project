@@ -12,7 +12,7 @@
       }
     },
     {
-      "name": "ContinuousIntegration",
+      "name": "continuous-integration",
       "displayName": "Configuration for Continuous Integration",
       "inherits": "defaults",
       "cacheVariables": {
@@ -24,42 +24,17 @@
       }
     },
     {
-      "name": "Coverage",
+      "name": "coverage",
       "displayName": "Configuration for Code Coverage",
-      "inherits": "ContinuousIntegration",
+      "inherits": "continuous-integration",
       "cacheVariables": {
         "EMIL_ENABLE_COVERAGE": "On"
       },
       "generator": "Ninja"
     },
     {
-      "name": "MutationTesting",
-      "displayName": "Configuration for Mutation Testing",
-      "inherits": "ContinuousIntegration",
-      "cacheVariables": {
-        "CMAKE_C_COMPILER": "clang-12",
-        "CMAKE_CXX_COMPILER": "clang++-12",
-        "EMIL_ENABLE_MUTATION_TESTING": "On",
-        "EMIL_MUTATION_TESTING_RUNNER_ARGUMENTS": "--reporters;Elements;--report-dir;${sourceDir}/reports/mull"
-      },
-      "generator": "Ninja"
-    },
-    {
-      "name": "Fuzzing",
-      "displayName": "Configuration for Fuzzing",
-      "inherits": "ContinuousIntegration",
-      "cacheVariables": {
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++",
-        "EMIL_BUILD_TESTS": "Off",
-        "EMIL_BUILD_EXAMPLES": "Off",
-        "EMIL_ENABLE_FUZZING": "On"
-      },
-      "generator": "Ninja"
-    },
-    {
-      "name": "Host",
-      "displayName": "Configuration for Host Tooling",
+      "name": "host",
+      "displayName": "Configuration for host Tooling",
       "inherits": "defaults",
       "cacheVariables": {
         "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo;MinSizeRel",
@@ -69,20 +44,7 @@
       "generator": "Ninja Multi-Config"
     },
     {
-      "name": "HostClangMsvc",
-      "displayName": "Configuration for Host Tooling using clang-cl to target Windows",
-      "inherits": "defaults",
-      "toolchainFile": "${sourceDir}/cmake/toolchain-clang-x86_64-pc-windows-msvc.cmake",
-      "cacheVariables": {
-        "CMAKE_COMPILE_WARNING_AS_ERROR": "Off",
-        "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo;MinSizeRel",
-        "EMIL_BUILD_TESTS": "Off",
-        "EMIL_BUILD_EXAMPLES": "Off"
-      },
-      "generator": "Ninja Multi-Config"
-    },
-    {
-      "name": "Embedded-CortexM4",
+      "name": "embedded-cortex-m4",
       "displayName": "Configuration for Embedded",
       "inherits": "defaults",
       "toolchainFile": "${sourceDir}/embedded-infra/cmake/toolchain-arm-gcc-m4-fpv4-sp-d16.cmake",
@@ -96,7 +58,7 @@
       "name": "EK-TM4C123GXL-Custom",
       "displayName": "EK-TM4C123GXL-Custom",
       "description": "Configuration for EK-TM4C123GXL custom - Boost-DRV8711 and BOOSTXL-key60QVG-S1",
-      "inherits": "Embedded-CortexM4",
+      "inherits": "embedded-cortex-m4",
       "cacheVariables": {
         "TARGET_MCU_VENDOR": "ti",
         "TARGET_MCU_FAMILY": "TM4C123",
@@ -110,7 +72,7 @@
       "name": "EK-TM4C1294XL-Custom",
       "displayName": "EK-TM4C1294XL-Custom",
       "description": "Configuration for EK-TM4C1294XL custom - Boost-DRV8711 and BOOSTXL-key60QVG-S1",
-      "inherits": "Embedded-CortexM4",
+      "inherits": "embedded-cortex-m4",
       "cacheVariables": {
         "TARGET_MCU_VENDOR": "ti",
         "TARGET_MCU_FAMILY": "TM4C129",
@@ -123,54 +85,34 @@
   ],
   "buildPresets": [
     {
-      "name": "ContinuousIntegration",
+      "name": "continuous-integration",
       "configuration": "Debug",
-      "configurePreset": "ContinuousIntegration"
+      "configurePreset": "continuous-integration"
     },
     {
-      "name": "Coverage",
+      "name": "coverage",
       "configuration": "Debug",
-      "configurePreset": "Coverage"
+      "configurePreset": "coverage"
     },
     {
-      "name": "MutationTesting",
+      "name": "host-Debug",
       "configuration": "Debug",
-      "configurePreset": "MutationTesting"
+      "configurePreset": "host"
     },
     {
-      "name": "Fuzzing",
-      "configuration": "Debug",
-      "configurePreset": "Fuzzing"
-    },
-    {
-      "name": "Host-Debug",
-      "configuration": "Debug",
-      "configurePreset": "Host"
-    },
-    {
-      "name": "Host-Release",
+      "name": "host-Release",
       "configuration": "Release",
-      "configurePreset": "Host"
+      "configurePreset": "host"
     },
     {
-      "name": "Host-RelWithDebInfo",
+      "name": "host-RelWithDebInfo",
       "configuration": "RelWithDebInfo",
-      "configurePreset": "Host"
+      "configurePreset": "host"
     },
     {
-      "name": "Host-MinSizeRel",
+      "name": "host-MinSizeRel",
       "configuration": "MinSizeRel",
-      "configurePreset": "Host"
-    },
-    {
-      "name": "HostClangMsvc-Debug",
-      "configuration": "Debug",
-      "configurePreset": "HostClangMsvc"
-    },
-    {
-      "name": "HostClangMsvc-RelWithDebInfo",
-      "configuration": "RelWithDebInfo",
-      "configurePreset": "HostClangMsvc"
+      "configurePreset": "host"
     },
     {
       "name": "EK-TM4C123GXL-Custom-Debug",
@@ -226,25 +168,16 @@
       }
     },
     {
-      "name": "ContinuousIntegration",
-      "configurePreset": "ContinuousIntegration",
+      "name": "continuous-integration",
+      "configurePreset": "continuous-integration",
       "configuration": "Debug",
       "inherits": "defaults"
     },
     {
-      "name": "Coverage",
-      "configurePreset": "Coverage",
+      "name": "coverage",
+      "configurePreset": "coverage",
       "configuration": "Debug",
       "inherits": "defaults"
-    },
-    {
-      "name": "MutationTesting",
-      "configurePreset": "MutationTesting",
-      "configuration": "Debug",
-      "inherits": "defaults",
-      "output": {
-        "verbosity": "verbose"
-      }
     }
   ]
 }
