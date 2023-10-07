@@ -10,7 +10,9 @@
 
   "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
   "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json",
-  "clangd.arguments": ["--query-driver=/**/arm-none-eabi-*"],
+  "clangd.arguments": ["--query-driver=/**/arm-none-eabi-*", "--compile-commands-dir=${workspaceFolder}/build"],
+  "C_Cpp.autoAddFileAssociations": false,
+  "C_Cpp.intelliSenseEngine": "disabled",
   "cmake.statusbar.visibility": "compact",
   "cmake.useProjectStatusView": false,
   "sonarlint.connectedMode.project": {
