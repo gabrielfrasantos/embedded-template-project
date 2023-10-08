@@ -9,14 +9,12 @@
 #include "hal_tiva/instantiations/EventInfrastructure.hpp"
 #include "hal_tiva/instantiations/LaunchPadBsp.hpp"
 #include "hal_tiva/instantiations/lwip/Ethernet.hpp"
-#include "hal_tiva/instantiations/lwip/EthernetSmiObserver.hpp"
 #include "hal_tiva/synchronous_tiva/SynchronousSpiMaster.hpp"
-#include "hal_tiva/tiva/ClockTm4c129.hpp"
 #include "hal_tiva/tiva/Gpio.hpp"
 #include "hal_tiva/tiva/QuadratureEncoder.hpp"
 #include "hal_tiva/tiva/Uart.hpp"
-#include "hal_tiva/tiva/UniqueDeviceId.hpp"
-#include "infra/stream/StringOutputStream.hpp"
+#include "lwip/lwip_cpp/MulticastLwIp.hpp"
+#include "services/network/Datagram.hpp"
 
 namespace application
 {
@@ -50,6 +48,8 @@ namespace application
         OptionalForInterface<hal::QuadratureEncoder>& EncoderMotor() override;
         OptionalForInterface<hal::QuadratureEncoder>& EncoderUser() override;
         OptionalForInterface<services::ConnectionFactory>& ConnectionFactory() override;
+        OptionalForInterface<services::DatagramFactory>& UpdFactory() override;
+        OptionalForInterface<services::Multicast>& MulticastFactory() override;
 
     private:
         class RandomDataGenerator
@@ -148,7 +148,9 @@ namespace application
         {
             Ethernet(const hal::MacAddress& macAddress, const infra::BoundedString& hostname)
                 : ethernet(leds, macAddress, hostname, randomDataGenerator)
-                , interface(ethernet.lightweightIp)
+                , connectionInterface(ethernet.lightweightIp)
+                , datagramInterface(ethernet.lightweightIp)
+                , multicastInterface(ethernet.lightweightIp)
             {}
             virtual ~Ethernet() = default;
 
@@ -160,7 +162,9 @@ namespace application
             hal::tiva::Ethernet::Leds leds{ led0, led1, hal::tiva::dummyPin };
 
             instantiations::Ethernet<1, 1, 5> ethernet;
-            OptionalForInterface<services::ConnectionFactory> interface;
+            OptionalForInterface<services::ConnectionFactory> connectionInterface;
+            OptionalForInterface<services::DatagramFactory> datagramInterface;
+            OptionalForInterface<services::Multicast> multicastInterface;
         };
 
         hal::MacAddress& GenerateMacAddress();

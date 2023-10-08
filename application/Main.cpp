@@ -31,6 +31,7 @@ int main()
                     if (hw.EncoderMotor())
                         static application::parsers::QuadratureEncoder parserQuadratureEncoderMotor("qei_motor", "Motor encoder", hw.Terminal(), hw.Tracer(), *hw.EncoderMotor());
 
+                    // USB host
                     // external flash?
                     // PWM?
                     // littleFS with external flash?

@@ -8,6 +8,8 @@
 #include "infra/event/EventDispatcherWithWeakPtr.hpp"
 #include "infra/util/Function.hpp"
 #include "services/network/Connection.hpp"
+#include "services/network/Datagram.hpp"
+#include "services/network/Multicast.hpp"
 #include "services/util/Terminal.hpp"
 #include "infra/util/Optional.hpp"
 
@@ -142,6 +144,8 @@ namespace application
         virtual OptionalForInterface<hal::QuadratureEncoder>& EncoderMotor() = 0;
         virtual OptionalForInterface<hal::QuadratureEncoder>& EncoderUser() = 0;
         virtual OptionalForInterface<services::ConnectionFactory>& ConnectionFactory() = 0;
+        virtual OptionalForInterface<services::DatagramFactory>& UpdFactory() = 0;
+        virtual OptionalForInterface<services::Multicast>& MulticastFactory() = 0;
     };
 }
 

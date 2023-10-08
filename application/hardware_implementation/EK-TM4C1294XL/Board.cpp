@@ -1,5 +1,8 @@
 #include "application/hardware_implementation/EK-TM4C1294XL/Board.hpp"
 #include "hal/interfaces/Gpio.hpp"
+#include "hal_tiva/tiva/ClockTm4c129.hpp"
+#include "hal_tiva/tiva/UniqueDeviceId.hpp"
+#include "infra/stream/StringOutputStream.hpp"
 
 namespace application
 {
@@ -94,6 +97,16 @@ namespace application
 
     OptionalForInterface<services::ConnectionFactory>& HardwareAbstractionImpl::ConnectionFactory()
     {
-        return ethernet.interface;
+        return ethernet.connectionInterface;
+    }
+
+    OptionalForInterface<services::DatagramFactory>& HardwareAbstractionImpl::UpdFactory()
+    {
+        return ethernet.datagramInterface;
+    }
+
+    OptionalForInterface<services::Multicast>& HardwareAbstractionImpl::MulticastFactory()
+    {
+        return ethernet.multicastInterface;
     }
 }
