@@ -109,7 +109,7 @@
     {
       "name": "mutation-testing",
       "configuration": "Debug",
-      "configurePreset": "continuous-integration"
+      "configurePreset": "mutation-testing"
     },
     {
       "name": "host-Debug",
