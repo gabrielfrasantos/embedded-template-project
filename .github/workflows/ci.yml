@@ -107,6 +107,7 @@ jobs:
            configurePreset: "${{ matrix.hardware }}"
            buildPreset: "${{ matrix.hardware }}-${{ matrix.configuration }}"
            configurePresetAdditionalArgs: "['-DCMAKE_C_COMPILER_LAUNCHER=ccache', '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
+
   # rtos:
   #   name: Embedded Build - RTOS
   #   runs-on: ubuntu-latest
