@@ -35,7 +35,7 @@
     {
       "name": "mutation-testing",
       "displayName": "Configuration for Mutation Testing",
-      "inherits": "ContinuousIntegration",
+      "inherits": "continuous-integration",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang++",
