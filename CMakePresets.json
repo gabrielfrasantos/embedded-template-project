@@ -33,6 +33,18 @@
       "generator": "Ninja"
     },
     {
+      "name": "mutation-testing",
+      "displayName": "Configuration for Mutation Testing",
+      "inherits": "ContinuousIntegration",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "EMIL_ENABLE_MUTATION_TESTING": "On",
+        "EMIL_MUTATION_TESTING_RUNNER_ARGUMENTS": "--reporters;Elements;--report-dir;${sourceDir}/reports/mull"
+      },
+      "generator": "Ninja"
+    },
+    {
       "name": "host",
       "displayName": "Configuration for host Tooling",
       "inherits": "defaults",
@@ -93,6 +105,11 @@
       "name": "coverage",
       "configuration": "Debug",
       "configurePreset": "coverage"
+    },
+    {
+      "name": "mutation-testing",
+      "configuration": "Debug",
+      "configurePreset": "continuous-integration"
     },
     {
       "name": "host-Debug",
@@ -178,6 +195,15 @@
       "configurePreset": "coverage",
       "configuration": "Debug",
       "inherits": "defaults"
+    },
+    {
+      "name": "mutation-testing",
+      "configurePreset": "mutation-testing",
+      "configuration": "Debug",
+      "inherits": "defaults",
+      "output": {
+        "verbosity": "verbose"
+      }
     }
   ]
 }
