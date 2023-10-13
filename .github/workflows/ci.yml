@@ -30,7 +30,7 @@ jobs:
           persist-credentials: false
           submodules: recursive
           token: ${{ secrets.CI_TOKEN }}
-      - uses: hendrikmuhs/ccache-action@ca3acd2731eef11f1572ccb126356c2f9298d35e # v1.2.9
+      - uses: hendrikmuhs/ccache-action@6d1841ec156c39a52b1b23a810da917ab98da1f4 # v1.2.10
         with:
           key: ${{ github.job }}-ubuntu-latest
           variant: sccache
@@ -58,7 +58,7 @@ jobs:
           persist-credentials: false
           submodules: recursive
           token: ${{ secrets.CI_TOKEN }}
-      - uses: hendrikmuhs/ccache-action@ca3acd2731eef11f1572ccb126356c2f9298d35e # v1.2.9
+      - uses: hendrikmuhs/ccache-action@6d1841ec156c39a52b1b23a810da917ab98da1f4 # v1.2.10
         with:
           key: ${{ github.job }}-${{ matrix.os }}
           variant: sccache
@@ -94,7 +94,7 @@ jobs:
         with:
           release: ${{ matrix.gcc }}
       - run: sudo apt-get update && sudo apt-get install ninja-build
-      - uses: hendrikmuhs/ccache-action@ca3acd2731eef11f1572ccb126356c2f9298d35e # v1.2.9
+      - uses: hendrikmuhs/ccache-action@6d1841ec156c39a52b1b23a810da917ab98da1f4 # v1.2.10
         with:
           key: ${{ github.job }}-${{ matrix.gcc }}-${{ matrix.configuration }}
       - uses: lukka/run-cmake@c2b72aff009141774c5a5fabe74ea46c8c04d9c4 # v10.6
@@ -120,7 +120,7 @@ jobs:
   #       with:
   #         release: "10.3-2021.10"
   #     - run: sudo apt-get update && sudo apt-get install ninja-build
-  #     - uses: hendrikmuhs/ccache-action@ca3acd2731eef11f1572ccb126356c2f9298d35e # v1.2.9
+  #     - uses: hendrikmuhs/ccache-action@6d1841ec156c39a52b1b23a810da917ab98da1f4 # v1.2.10
   #       with:
   #         key: ${{ github.job }}
   #     - uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
