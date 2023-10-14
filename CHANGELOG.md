@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD024 -->
 
-# embedded-reference-project Changelog
+# embedded-template-project Changelog
 
 All notable changes to this project will be documented in this file.
 

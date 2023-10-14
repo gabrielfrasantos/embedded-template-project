@@ -1,17 +1,17 @@
-# embedded-reference-project
+# embedded-template-project
 
 <div align="center">
 
-[![Continuous Integration](https://github.com/gabrielfrasantos/embedded-reference-project/workflows/Continuous%20Integration/badge.svg)](https://github.com/gabrielfrasantos/embedded-reference-project/actions) [![Linting & Formatting](https://github.com/gabrielfrasantos/embedded-reference-project/actions/workflows/linting-formatting.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-reference-project/actions/workflows/linting-formatting.yml) [![Static Analysis](https://github.com/gabrielfrasantos/embedded-reference-project/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-reference-project/actions/workflows/static-analysis.yml)
+[![Continuous Integration](https://github.com/gabrielfrasantos/embedded-template-project/workflows/Continuous%20Integration/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions) [![Linting & Formatting](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/linting-formatting.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/linting-formatting.yml) [![Static Analysis](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/static-analysis.yml)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=philips-software_embeddedinfralib&metric=alert_status)](https://sonarcloud.io/dashboard?id=philips-software_embeddedinfralib) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=philips-software_embeddedinfralib&metric=coverage)](https://sonarcloud.io/dashboard?id=philips-software_embeddedinfralib) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=philips-software_embeddedinfralib&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=philips-software_embeddedinfralib)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/) [![Documentation](https://img.shields.io/website?down_message=offline&label=Documentation&up_message=online&url=https%3A%2F%2Fimg.shields.io%2Fwebsite-up-down-green-red%2Fhttps%2Fphilips-software.github.io%2amp-embedded-infra-lib.svg)](https://gabrielfrasantos.github.io/embedded-reference-project/) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gabrielfrasantos/embedded-reference-project/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gabrielfrasantos/embedded-reference-project)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/) [![Documentation](https://img.shields.io/website?down_message=offline&label=Documentation&up_message=online&url=https%3A%2F%2Fimg.shields.io%2Fwebsite-up-down-green-red%2Fhttps%2Fphilips-software.github.io%2amp-embedded-infra-lib.svg)](https://gabrielfrasantos.github.io/embedded-template-project/) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gabrielfrasantos/embedded-template-project/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gabrielfrasantos/embedded-template-project)
  [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6667/badge)](https://bestpractices.coreinfrastructure.org/projects/6667)
 
 </div>
 
-**Description**: embedded-reference-project is a base project which contains all submodules related to embedded development.
+**Description**: embedded-template-project is a base project which contains all submodules related to embedded development.
 
 ## Dependencies
 
@@ -47,16 +47,16 @@ Code examples can be found under the [examples](examples) folder.
 
 ## Documentation
 
-Documentation is available on [gabrielfrasantos.github.io/embedded-reference-project](https://gabrielfrasantos.github.io/embedded-reference-project/).
+Documentation is available on [gabrielfrasantos.github.io/embedded-template-project](https://gabrielfrasantos.github.io/embedded-template-project/).
 
 ## Contributing
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
-embedded-reference-project uses semantic versioning and conventional commits.
+embedded-template-project uses semantic versioning and conventional commits.
 
 Please refer to our [Contributing](CONTRIBUTING.md) guide when you want to contribute to this project.
 
 ## License
 
-embedded-reference-project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license. See [LICENSE file](LICENSE.md).
+embedded-template-project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license. See [LICENSE file](LICENSE.md).

@@ -4,7 +4,7 @@
   "packages": {
     ".": {
       "release-type": "simple",
-      "package-name": "embedded-reference-project",
+      "package-name": "embedded-template-project",
       "extra-files": [
         "CMakeLists.txt",
         "sonar-project.properties",

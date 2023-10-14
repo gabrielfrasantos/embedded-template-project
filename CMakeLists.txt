@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(embedded-reference-project LANGUAGES C CXX VERSION 1.0.0) # x-release-please-version
+project(embedded-template-project LANGUAGES C CXX VERSION 1.0.0) # x-release-please-version
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED On)
