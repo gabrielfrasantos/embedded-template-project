@@ -25,6 +25,7 @@ jobs:
         with:
           persist-credentials: false
           submodules: recursive
+          token: ${{ secrets.CI_TOKEN }}
       - uses: DoozyX/clang-format-lint-action@a83a8fb7d371f66da7dd1c4f33a193023899494b # v0.16
         with:
           clangFormatVersion: 14
@@ -48,6 +49,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           submodules: recursive
+          token: ${{ secrets.CI_TOKEN }}
       - uses: oxsecurity/megalinter@a7b1a3af0f3bd4de4db855969d27e224005665a6 # v7.1.0
         env:
           APPLY_FIXES: all

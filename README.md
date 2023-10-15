@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Continuous Integration](https://github.com/gabrielfrasantos/embedded-template-project/workflows/Continuous%20Integration/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions)
+[![Continuous Integration](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/ci.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/ci.yml)
 [![Linting & Formatting](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/linting-formatting.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/linting-formatting.yml)
 [![Static Analysis](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/gabrielfrasantos/embedded-template-project/actions/workflows/static-analysis.yml)
 
