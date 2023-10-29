@@ -25,3 +25,6 @@
 [submodule "arch/arm_cortex_m_r"]
 	path = arch/arm_cortex_m_r
 	url = https://github.com/gabrielfrasantos/embedded-hal-arm-cortex.git
+[submodule "implementations/lvgl"]
+	path = implementations/lvgl
+	url = https://github.com/gabrielfrasantos/embedded-lvgl.git
