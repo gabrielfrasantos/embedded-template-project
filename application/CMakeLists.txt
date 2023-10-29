@@ -23,7 +23,7 @@ if (CMAKE_CROSSCOMPILING)
 
     emil_generate_artifacts(TARGET reference_project.application LST MAP BIN HEX)
 else()
-    if (REFERENCE_PROJECT_ENABLE_TESTS)
+    if (TEMPLATE_PROJECT_ENABLE_TESTS)
         add_subdirectory(test)
     endif()
 endif()

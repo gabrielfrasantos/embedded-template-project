@@ -5,15 +5,16 @@ project(embedded-template-project LANGUAGES C CXX VERSION 1.0.0) # x-release-ple
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED On)
 
-option(REFERENCE_PROJECT_ENABLE_TESTS "Enable unit tests" Off)
-option(REFERENCE_PROJECT_ENABLE_COVERAGE "Enable coverage" Off)
-option(REFERENCE_PROJECT_ENABLE_FILESYSTEM "Enable embedded immplementation of a filesystem" Off)
-option(REFERENCE_PROJECT_ENABLE_SEGGER_RTT "Enable embedded immplementation of Segger RTT" Off)
-option(REFERENCE_PROJECT_ENABLE_STM32_USB "Enable embedded immplementation of USB stack (STM32 USB)" Off)
+option(TEMPLATE_PROJECT_ENABLE_TESTS "Enable unit tests" Off)
+option(TEMPLATE_PROJECT_ENABLE_COVERAGE "Enable coverage" Off)
+option(TEMPLATE_PROJECT_ENABLE_FILESYSTEM "Enable embedded immplementation of a filesystem" Off)
+option(TEMPLATE_PROJECT_ENABLE_SEGGER_RTT "Enable embedded immplementation of Segger RTT" Off)
+option(TEMPLATE_PROJECT_ENABLE_STM32_USB "Enable embedded immplementation of USB stack (STM32 USB)" Off)
+option(TEMPLATE_PROJECT_ENABLE_LVGL "Enable embedded immplementation of lvgl (Light and Versatile Graphics Library)" Off)
 
 set_directory_properties(PROPERTY USE_FOLDERS ON)
 
-if (REFERENCE_PROJECT_ENABLE_TESTS)
+if (TEMPLATE_PROJECT_ENABLE_TESTS)
     include(CTest)
     enable_testing()
 endif()
@@ -21,21 +22,25 @@ endif()
 add_subdirectory(embedded-infra)
 add_subdirectory(drivers)
 
-if (NOT REFERENCE_PROJECT_ENABLE_TESTS)
+if (NOT TEMPLATE_PROJECT_ENABLE_TESTS)
     if (TARGET_MCU_VENDOR)
         add_subdirectory(arch/hal/${TARGET_MCU_VENDOR})
     endif()
 
-    if (REFERENCE_PROJECT_ENABLE_FILESYSTEM)
+    if (TEMPLATE_PROJECT_ENABLE_FILESYSTEM)
         add_subdirectory(implementations/filesystem)
     endif()
 
-    if (REFERENCE_PROJECT_ENABLE_SEGGER_RTT)
+    if (TEMPLATE_PROJECT_ENABLE_SEGGER_RTT)
         add_subdirectory(implementations/segger_rtt)
     endif()
 
-    if (REFERENCE_PROJECT_ENABLE_STM32_USB)
+    if (TEMPLATE_PROJECT_ENABLE_STM32_USB)
         add_subdirectory(implementations/stm32_usb)
+    endif()
+
+    if (TEMPLATE_PROJECT_ENABLE_LVGL)
+        add_subdirectory(implementations/lvgl)
     endif()
 endif()
 

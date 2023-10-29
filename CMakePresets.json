@@ -20,7 +20,7 @@
         "EMIL_ENABLE_DOCKER_TOOLS": "Off",
         "EMIL_BUILD_EXAMPLES": "On",
         "EMIL_BUILD_TESTS": "On",
-        "REFERENCE_PROJECT_ENABLE_TESTS": "On"
+        "TEMPLATE_PROJECT_ENABLE_TESTS": "On"
       }
     },
     {
@@ -77,7 +77,7 @@
         "TARGET_MCU": "tm4c123gh6pm",
         "DRIVERS_INCLUDE_DISPLAY_TFT": "On",
         "DRIVERS_INCLUDE_DRIVER_STEPPER_MOTOR": "On",
-        "REFERENCE_PROJECT_BOARD": "EK-TM4C123GXL"
+        "TEMPLATE_PROJECT_BOARD": "EK-TM4C123GXL"
       }
     },
     {
@@ -91,7 +91,8 @@
         "TARGET_MCU": "tm4c1294ncpdt",
         "DRIVERS_INCLUDE_DISPLAY_TFT": "On",
         "DRIVERS_INCLUDE_DRIVER_STEPPER_MOTOR": "On",
-        "REFERENCE_PROJECT_BOARD": "EK-TM4C1294XL"
+        "TEMPLATE_PROJECT_ENABLE_LVGL": "On",
+        "TEMPLATE_PROJECT_BOARD": "EK-TM4C1294XL"
       }
     }
   ],

@@ -1,14 +1,12 @@
 {
   "include-component-in-tag": false,
-  "plugins": ["sentence-case"],
   "packages": {
     ".": {
       "release-type": "simple",
       "package-name": "embedded-template-project",
       "extra-files": [
         "CMakeLists.txt",
-        "sonar-project.properties",
-        "protobuf/echo/protocol_buffer_echo.cmake"
+        "sonar-project.properties"
       ]
     }
   },
