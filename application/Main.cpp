@@ -19,6 +19,7 @@ int main()
 
                     static services::DebugLed debugLed(hw.DebugLed(), std::chrono::milliseconds(100), std::chrono::milliseconds(1400));
 
+
                     if (hw.Display() && hw.DisplayBackLight())
                         static application::parsers::Display parserDisplay("display", "Main display", hw.Terminal(), hw.Tracer(), *hw.Display(), *hw.DisplayBackLight());
 
