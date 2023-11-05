@@ -15,6 +15,7 @@ if (CMAKE_CROSSCOMPILING)
     add_subdirectory(hardware_abstraction)
     add_subdirectory(hardware_implementation)
     add_subdirectory(parsers)
+    add_subdirectory(gui)
 
     if (TARGET_MCU_VENDOR STREQUAL "ti")
         hal_ti_target_default_linker_scripts(reference_project.application)

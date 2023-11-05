@@ -54,6 +54,7 @@ namespace application::parsers
         , gui(displayLvgl, inputDeviceLvgl)
     {
         terminal.AddMenu(menu);
+        mainScreen.Emplace();
     }
 
     infra::MemoryRange<const services::TerminalCommands::Command> Gui::Commands()

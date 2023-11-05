@@ -6,8 +6,10 @@
 #include "hal/interfaces/Gpio.hpp"
 #include "infra/util/BoundedString.hpp"
 #include "infra/util/MemoryRange.hpp"
+#include "infra/util/Optional.hpp"
 #include "services/tracer/TracerWithDateTime.hpp"
 #include "services/util/Terminal.hpp"
+#include "application/gui/MainScreen.hpp"
 
 namespace application::parsers
 {
@@ -78,6 +80,7 @@ namespace application::parsers
         DisplayFacade displayLvgl;
         InputDeviceStub inputDeviceLvgl;
         embedded::lvgl::Controller gui;
+        infra::Optional<application::gui::MainScreen> mainScreen;
     };
 }
 

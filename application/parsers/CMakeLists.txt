@@ -12,6 +12,7 @@ target_link_libraries(reference_project.application.parsers PUBLIC
     services.util
     drivers.stepper_motor
     embedded_lvgl.interfaces
+    reference_project.application.gui
 )
 
 target_sources(reference_project.application.parsers PRIVATE
