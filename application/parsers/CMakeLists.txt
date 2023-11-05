@@ -11,13 +11,14 @@ target_link_libraries(reference_project.application.parsers PUBLIC
     infra.util
     services.util
     drivers.stepper_motor
+    embedded_lvgl.interfaces
 )
 
 target_sources(reference_project.application.parsers PRIVATE
-    Display.cpp
-    Display.hpp
     DriverDrv8711.cpp
     DriverDrv8711.hpp
+    Gui.cpp
+    Gui.hpp
     QuadratureEncoder.cpp
     QuadratureEncoder.hpp
 )
