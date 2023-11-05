@@ -27,4 +27,4 @@
           with:
             command: manifest
             release-type: simple
-            token: ${{ secrets.AUTOMATIC_RELEASE_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
