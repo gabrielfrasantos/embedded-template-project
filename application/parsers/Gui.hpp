@@ -49,7 +49,7 @@ namespace application::parsers
             constexpr static std::size_t numberOfRows = 10;
 
             hal::DisplayLcd& display;
-            infra::BoundedVector<embedded::lvgl::Color>::WithMaxSize<maxWidth * numberOfRows> buffer1;
+            std::array<embedded::lvgl::Color, maxWidth * numberOfRows> buffer1;
         };
 
         class InputDeviceStub

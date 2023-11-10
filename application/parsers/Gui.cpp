@@ -54,6 +54,7 @@ namespace application::parsers
         , gui(displayLvgl, inputDeviceLvgl)
     {
         terminal.AddMenu(menu);
+        backlight.Set(true);
         mainScreen.Emplace();
     }
 
