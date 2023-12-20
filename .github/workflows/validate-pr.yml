@@ -11,7 +11,7 @@ jobs:
   conventional_commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: Namchee/conventional-pr@15e783651cfaa0c26ed993b971edf4418f50aba0 # v0.13.0
+      - uses: Namchee/conventional-pr@b31518c34a4243c21484e3187abbbee4a44d0ec4 # v0.15.4
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
           body: false
